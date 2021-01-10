@@ -24,21 +24,24 @@ public class BackButtonManager : MonoBehaviour
    {
       BackButtonOnOf();
    }
+   
    private void BackButtonOnOf()
    { 
-      if (backButtonCount2 >=1 && !backButton.activeInHierarchy)
+      backButton.SetActive(!backButton.activeInHierarchy);
+      // TORO Remove
+      /*if (backButtonCount2 >= 1 && !backButton.activeInHierarchy)
       {
          backButton.SetActive(true);
       }
-      else if (backButtonCount2<1 && backButton.activeInHierarchy)
+      else if (backButtonCount2 < 1 && backButton.activeInHierarchy)
       {
          backButton.SetActive(false);
-      }
+      }*/
    }
 
    public void BackButtonWrite()
    {
-      if(ButtonListManager.instance.WriteList.Count <=0) return;
+      if (ButtonListManager.instance.WriteList.Count <= 0) return;
       ButtonListManager.instance.WriteList[ButtonListManager.instance.WriteList.Count-1].
          GetComponent<ButtonController>().UndoWrite();
       backButtonCount2 -= 1;
