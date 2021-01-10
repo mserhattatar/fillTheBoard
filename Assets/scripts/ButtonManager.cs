@@ -7,6 +7,7 @@ public class ButtonManager : MonoBehaviour
 {
     public static ButtonManager instance; 
     public int number;
+    
     private void Awake()
     {
         instance = this;
@@ -30,13 +31,17 @@ public class ButtonManager : MonoBehaviour
 
     public static void ActiveButtonColor()
     {
+        // TODO add comment
         if(ButtonListManager.instance.WriteList.Count < 0) return;
+        
         ButtonColorPink(ButtonListManager.instance.WriteList[ButtonListManager.instance.WriteList.Count - 1]);
         ButtonListManager.instance.WriteList[ButtonListManager.instance.WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
-        if(ButtonListManager.instance.WriteList.Count < 2) return;
+        // TODO add comment
+        if (ButtonListManager.instance.WriteList.Count < 2) return;
+        
         ButtonColorRed(ButtonListManager.instance.WriteList[ButtonListManager.instance.WriteList.Count - 2]);
-    
     }
+    
     public static void ButtonStart(GameObject button)
     {
         ButtonColorwhite(button);
@@ -45,11 +50,13 @@ public class ButtonManager : MonoBehaviour
         var myselfButton = button.GetComponent<Button>();
         myselfButton.onClick.AddListener(button.GetComponent<ButtonController>().WriteNumber);
     }
+    
     public static void ButtonImage(GameObject button)
     {
         var carpi = Resources.Load<Sprite>("carpi");
         var suitHealth = button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
     }
+    
     public static void ButtonColorBlue(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
@@ -58,6 +65,7 @@ public class ButtonManager : MonoBehaviour
         colorBlock.highlightedColor = Color.cyan;
         button.GetComponent<Button>().colors = colorBlock;
     } 
+    
     public static void ButtonColorwhite(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
@@ -68,6 +76,7 @@ public class ButtonManager : MonoBehaviour
         colorBlock.disabledColor = Color.white;
         button.GetComponent<Button>().colors = colorBlock;
     }
+    
     public static void ButtonColorGray(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
@@ -105,13 +114,14 @@ public class ButtonManager : MonoBehaviour
 
     public static void SetBackButtonNumberInButtons()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i=0; i < 2; i++)
         {
             int emptybuttoncount =GameManager.instance.emptyButtonCount;
             int buttonNo = Random.Range(0, emptybuttoncount -1);
             ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().setBackButtonNumber = true;
         }
     }
+    
     public static void SetFreeButtonNumbers()
     {
         GameManager.instance.emptyButtonCount = 0;
@@ -120,10 +130,11 @@ public class ButtonManager : MonoBehaviour
             GameManager.instance.emptyButtonCount += 1;
         }
     }
+    
     private static void BlockButton()
     {
         int emptybuttoncount =GameManager.instance.emptyButtonCount;
-        for (int i = 0; i < emptybuttoncount; i++)
+        for (int i=0; i<emptybuttoncount; i++)
         {
             int buttonNo = Random.Range(0, 100);
             ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().LockButton();
