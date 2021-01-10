@@ -26,6 +26,7 @@ public class ButtonListManager : MonoBehaviour
         instance = this;
         AddGamePlate();
     }
+    
     private void AddGamePlate()
     {
         GamePlate.Add(Button10);
@@ -39,8 +40,4 @@ public class ButtonListManager : MonoBehaviour
         GamePlate.Add(Button90);
         GamePlate.Add(Button100);
     }
-    
-    
-
-   
 }
