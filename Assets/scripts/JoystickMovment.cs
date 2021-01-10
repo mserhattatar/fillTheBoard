@@ -21,6 +21,7 @@ public class JoystickMovment : MonoBehaviour
     {
         /*JoystickControl();*/
     }
+    
     private void JoystickControl()
     {
         _joystickMovVector2.x = _joystick.Horizontal;
