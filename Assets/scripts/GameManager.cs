@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int minNumberForNextLevelInt;
     public int fakeLevelNumber;
     public int backButtonCount;
+    
     private void Awake()
     {
         if (instance == null)

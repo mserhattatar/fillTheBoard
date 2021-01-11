@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -15,9 +15,9 @@ public class ButtonController : MonoBehaviour
    
     private void Start()
     {
-        ButtonManager.ButtonStart(gameObject);
-        
+        ButtonManager.ButtonStart(gameObject); 
     }
+    
     private void Update()
     {
        NextButtons();
@@ -25,8 +25,9 @@ public class ButtonController : MonoBehaviour
 
     public void WriteNumber()
     {
-        if(lockButton) return;
-        if(_lockButtonWrite) return;
+        if (lockButton) return;
+        if (_lockButtonWrite) return;
+        
         FindButtonİndex();
         gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 10f;
         emptytext.text = ButtonManager.instance.number.ToString();
@@ -40,10 +41,11 @@ public class ButtonController : MonoBehaviour
         _lockButtonWrite = true;
         if (!setBackButtonNumber) return;
         BackButtonManager.instance.BackButtonCountAdd();
-        setBackButtonNumber =false;
+        setBackButtonNumber = false;
         
         
     }
+    
     public void LockButton()
     {
         ButtonManager.ButtonColorGray(gameObject);
@@ -55,6 +57,7 @@ public class ButtonController : MonoBehaviour
         lockButton = true;
         _lockButtonWrite = true;
     }
+    
     public void UndoWrite()
     {
         lockButton = false;
@@ -70,7 +73,7 @@ public class ButtonController : MonoBehaviour
     {
         for (var i=0; i< ButtonListManager.instance.GamePlate.Count; i++)
         {
-            for (var j = 0; j < ButtonListManager.instance.GamePlate[i].Count; j++)
+            for (var j=0; j<ButtonListManager.instance.GamePlate[i].Count; j++)
             {
                 if (ButtonListManager.instance.GamePlate[i][j] == gameObject)
                 {
@@ -85,35 +88,35 @@ public class ButtonController : MonoBehaviour
     {
         // sol -- satir, sutun-3
         if (sutun - 3 >= 0)
-            AddToTargetButtonList( satir,  sutun -3);
+            AddToTargetButtonList(satir,  sutun -3);
         
         // sag -- satir, sutun +3
         if (sutun + 3 < 10)
-            AddToTargetButtonList( satir,  sutun +3);
+            AddToTargetButtonList(satir,  sutun +3);
         
         // yukari -- satir - 3, sutun 
-        if (satir -3 >=0)
-            AddToTargetButtonList( satir -3,  sutun);
+        if (satir -3 >= 0)
+            AddToTargetButtonList(satir -3,  sutun);
         
         // aşağı -- satir + 3, sutun 
         if (satir +3 < 10)
-            AddToTargetButtonList( satir +3,  sutun);
+            AddToTargetButtonList(satir +3,  sutun);
         
         // sol-yukari i-2,j-2
         if (sutun - 2 >= 0 && satir -2 >= 0 )
-            AddToTargetButtonList( satir -2,  sutun -2);
+            AddToTargetButtonList(satir -2,  sutun -2);
         
         // sag yukari i-2, j+2
         if (sutun - 2 >= 0 && satir +2 < 10)
-            AddToTargetButtonList( satir +2,  sutun -2);
+            AddToTargetButtonList(satir +2,  sutun -2);
         
         // sol-aşağı i+2,j-2
         if (sutun + 2 < 10 && satir -2 >= 0 )
-            AddToTargetButtonList( satir -2,  sutun +2);
+            AddToTargetButtonList(satir -2,  sutun +2);
         
         // sag aşağı i+2, j+2
         if (sutun + 2  < 10 && satir +2 < 10)
-            AddToTargetButtonList( satir +2,  sutun +2);
+            AddToTargetButtonList(satir +2,  sutun +2);
     }
 
     private void AddToTargetButtonList(int satir , int sutun)

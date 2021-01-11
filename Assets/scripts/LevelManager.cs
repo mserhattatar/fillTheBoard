@@ -29,19 +29,19 @@ public class LevelManager : MonoBehaviour
         minNumberForNextLevelUI.text = _minNumberForNextLevel.ToString();
     }
    
-
     public void SetNextLevel(int activeButtonCount)
     {
+    // TODO remove comment
         Debug.Log("çalıştı // count= " + activeButtonCount);
         if (activeButtonCount <= 0 && !_levelFinish)
         {
+        // TODO remove comment
             Debug.Log("if çalıştı " + activeButtonCount);
             nextLevelButton.gameObject.SetActive(true);
             _levelFinish = true; 
         }
     }
     
-
     private void LevelBarControl()
     {
         levelBarFill = 1f * ButtonManager.instance.number / _minNumberForNextLevel;
@@ -64,6 +64,7 @@ public class LevelManager : MonoBehaviour
         else
             SceneManager.LoadScene(levelNumber + 1);
     }
+    
     public void RetryScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
