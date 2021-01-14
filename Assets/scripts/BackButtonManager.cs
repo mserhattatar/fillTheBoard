@@ -1,8 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UIElements;
-using Button = UnityEngine.UI.Button;
+﻿using UnityEngine;
 
 public class BackButtonManager : MonoBehaviour
 {

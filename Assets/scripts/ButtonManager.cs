@@ -114,7 +114,7 @@ public class ButtonManager : MonoBehaviour
 
     public static void SetBackButtonNumberInButtons()
     {
-        for (int i=0; i < 2; i++)
+        for (int i=0; i < 1; i++)
         {
             int emptybuttoncount =GameManager.instance.emptyButtonCount;
             int buttonNo = Random.Range(0, emptybuttoncount -1);
@@ -136,7 +136,7 @@ public class ButtonManager : MonoBehaviour
         int emptybuttoncount =GameManager.instance.emptyButtonCount;
         for (int i=0; i<emptybuttoncount; i++)
         {
-            int buttonNo = Random.Range(0, 100);
+            int buttonNo = Random.Range(0, 49);
             ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().LockButton();
             SetBackButtonNumberInButtons();
         }

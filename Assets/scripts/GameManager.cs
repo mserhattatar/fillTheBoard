@@ -4,9 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public int number;
-    public int emptyButtonCount;
-    [HideInInspector]
-    public int minNumberForNextLevelInt;
+    public int emptyButtonCount;    
     public int fakeLevelNumber;
     public int backButtonCount;
     
@@ -22,7 +20,6 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         number = 1;
-        minNumberForNextLevelInt = 30;
         fakeLevelNumber= 1;
         backButtonCount = 2;
     }
@@ -40,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private void MinNumberForNextLevel()
     {
-        minNumberForNextLevelInt += 20;
+      
         fakeLevelNumber += 1;
     }
 }
