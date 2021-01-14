@@ -85,7 +85,7 @@ public class ButtonManager : MonoBehaviour
     public static void ButtonColorGray(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        var colorDirtyWhiteLikePanelColor = new Color(0.7137f, 0.6941f, 0.6784f, 1f);
+        var colorDirtyWhiteLikePanelColor = new Color(0.7264f, 0.5379f, 0.3871f, 1f);
         colorBlock.normalColor = colorDirtyWhiteLikePanelColor;
         colorBlock.highlightedColor = colorDirtyWhiteLikePanelColor;
         colorBlock.pressedColor = colorDirtyWhiteLikePanelColor;

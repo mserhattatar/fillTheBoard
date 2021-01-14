@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86, y: 110.99997}
+  m_AnchoredPosition: {x: -88.6, y: 110.99997}
   m_SizeDelta: {x: 73.74841, y: 32.84343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5347850477565564289
@@ -363,7 +363,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "TRY AGA\u0130N"
+  m_Text: RETRY LEVEL
 --- !u!1 &2493747720186405735
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,10 +715,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d9be057ec34114c4bab34db7f06090c9, type: 3}
-    m_FontSize: 29
+    m_FontSize: 15
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -726,7 +726,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RESET GAME
+  m_Text: RETRY GAME
 --- !u!1 &3965836515701746027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,7 +1079,7 @@ GameObject:
   - component: {fileID: 4162646054358945857}
   - component: {fileID: 7376948266305437831}
   m_Layer: 5
-  m_Name: TryAgain
+  m_Name: RetrtLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1102,8 +1102,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.90001, y: -76.600006}
-  m_SizeDelta: {x: 229.8544, y: 68.89844}
+  m_AnchoredPosition: {x: 15.9, y: -76.4}
+  m_SizeDelta: {x: 191.35214, y: 77.06558}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5084688546038753273
 CanvasRenderer:
@@ -1388,8 +1388,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 102.8, y: 109.75998}
-  m_SizeDelta: {x: 51.389526, y: 35.32273}
+  m_AnchoredPosition: {x: 96.200005, y: 111}
+  m_SizeDelta: {x: 72.16897, y: 32.843086}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8614980637420412974
 CanvasRenderer:
@@ -1717,7 +1717,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d9be057ec34114c4bab34db7f06090c9, type: 3}
-    m_FontSize: 12
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1728,7 +1728,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BACK
+  m_Text: STEP BACK
 --- !u!1 &6736589654569333142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,7 +1956,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11, y: 111}
+  m_AnchoredPosition: {x: 8.400002, y: 111}
   m_SizeDelta: {x: 73.74841, y: 32.84343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8108116326005320512
@@ -2693,7 +2693,7 @@ GameObject:
   - component: {fileID: 4877906843926630086}
   - component: {fileID: 7648937307139040294}
   m_Layer: 5
-  m_Name: RESET GAME
+  m_Name: RetryGAME
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2716,8 +2716,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15.90001, y: -212}
-  m_SizeDelta: {x: 229.8544, y: 68.89844}
+  m_AnchoredPosition: {x: 15.9, y: -201.93}
+  m_SizeDelta: {x: 140.46411, y: 51.04883}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4882415947046179428
 CanvasRenderer:
