@@ -131,7 +131,7 @@ public class ButtonController : MonoBehaviour
         {
             t.GetComponent<ButtonController>().lockButton = true;
             t.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.black;
-            ButtonManager.ButtonColorwhite(t);
+            ButtonManager.ButtonColorDirtyWhite(t);
         }
 
         foreach (var t in targetButtonList)

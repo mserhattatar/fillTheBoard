@@ -27,7 +27,7 @@ public class BackButtonManager : MonoBehaviour
       if (backButtonCount2 <= 0 && !buttonOnOf)
         {
             print(backButtonCount2 +"back button of");
-            ButtonManager.ButtonColorwhite(backButton);
+            ButtonManager.ButtonColorDirtyWhite(backButton);
             buttonOnOf = true;
         }
    }
