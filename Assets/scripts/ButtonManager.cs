@@ -138,7 +138,7 @@ public class ButtonManager : MonoBehaviour
         {
             int buttonNo = Random.Range(0, 49);
             ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().LockButton();
-            SetBackButtonNumberInButtons();
+           // SetBackButtonNumberInButtons();
         }
     }
 }
