@@ -4958,18 +4958,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &973285499
+--- !u!1001 &1232245232
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3158020781109998105, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -59.19995
-      objectReference: {fileID: 0}
     - target: {fileID: 4257660428991223265, guid: 66e8fe026762e3047b3af7433511b9d0,
         type: 3}
       propertyPath: m_Pivot.x

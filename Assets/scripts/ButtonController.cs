@@ -91,7 +91,7 @@ public class ButtonController : MonoBehaviour
             AddToTargetButtonList(satir,  sutun -3);
         
         // sag -- satir, sutun +3
-        if (sutun + 3 < 10)
+        if (sutun + 3 < 7)
             AddToTargetButtonList(satir,  sutun +3);
         
         // yukari -- satir - 3, sutun 
@@ -99,7 +99,7 @@ public class ButtonController : MonoBehaviour
             AddToTargetButtonList(satir -3,  sutun);
         
         // aşağı -- satir + 3, sutun 
-        if (satir +3 < 10)
+        if (satir +3 < 7)
             AddToTargetButtonList(satir +3,  sutun);
         
         // sol-yukari i-2,j-2
@@ -107,15 +107,15 @@ public class ButtonController : MonoBehaviour
             AddToTargetButtonList(satir -2,  sutun -2);
         
         // sag yukari i-2, j+2
-        if (sutun - 2 >= 0 && satir +2 < 10)
+        if (sutun - 2 >= 0 && satir +2 < 7)
             AddToTargetButtonList(satir +2,  sutun -2);
         
         // sol-aşağı i+2,j-2
-        if (sutun + 2 < 10 && satir -2 >= 0 )
+        if (sutun + 2 < 7 && satir -2 >= 0 )
             AddToTargetButtonList(satir -2,  sutun +2);
         
         // sag aşağı i+2, j+2
-        if (sutun + 2  < 10 && satir +2 < 10)
+        if (sutun + 2  < 7 && satir +2 < 7)
             AddToTargetButtonList(satir +2,  sutun +2);
     }
 

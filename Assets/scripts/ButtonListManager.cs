@@ -6,16 +6,13 @@ public class ButtonListManager : MonoBehaviour
 {
     public static ButtonListManager instance;
     
-    public List<GameObject> Button10 = new List<GameObject>();
-    public List<GameObject> Button20 = new List<GameObject>();
-    public List<GameObject> Button30 = new List<GameObject>();
-    public List<GameObject> Button40 = new List<GameObject>();
-    public List<GameObject> Button50 = new List<GameObject>();
-    public List<GameObject> Button60 = new List<GameObject>();
-    public List<GameObject> Button70 = new List<GameObject>();
-    public List<GameObject> Button80 = new List<GameObject>();
-    public List<GameObject> Button90 = new List<GameObject>();
-    public List<GameObject> Button100 = new List<GameObject>();
+    public List<GameObject> Button1 = new List<GameObject>();
+    public List<GameObject> Button2 = new List<GameObject>();
+    public List<GameObject> Button3 = new List<GameObject>();
+    public List<GameObject> Button4 = new List<GameObject>();
+    public List<GameObject> Button5 = new List<GameObject>();
+    public List<GameObject> Button6 = new List<GameObject>();
+    public List<GameObject> Button7 = new List<GameObject>(); 
     
     public List<GameObject> EmtyNumberButton = new List<GameObject>();
     public List<List<GameObject>> GamePlate = new List<List<GameObject>>();
@@ -29,15 +26,12 @@ public class ButtonListManager : MonoBehaviour
     
     private void AddGamePlate()
     {
-        GamePlate.Add(Button10);
-        GamePlate.Add(Button20);
-        GamePlate.Add(Button30);
-        GamePlate.Add(Button40);
-        GamePlate.Add(Button50);
-        GamePlate.Add(Button60);
-        GamePlate.Add(Button70);
-        GamePlate.Add(Button80);
-        GamePlate.Add(Button90);
-        GamePlate.Add(Button100);
+        GamePlate.Add(Button1);
+        GamePlate.Add(Button2);
+        GamePlate.Add(Button3);
+        GamePlate.Add(Button4);
+        GamePlate.Add(Button5);
+        GamePlate.Add(Button6);
+        GamePlate.Add(Button7);
     }
 }
