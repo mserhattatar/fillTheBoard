@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     private bool _levelFinish;
-    private int _minNumberForNextLevel;
 
     public static LevelManager instance;
-    public GameObject nextLevelButton;
+    public int minNumberForNextLevel;
+    public Text bestScore;
+    public GameObject nextLevelPanel;
+    public GameObject gameOverPanel;
     [HideInInspector]   
     public Text fakeLevelNumberUI;
 
@@ -21,18 +23,20 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         fakeLevelNumberUI.text = GameManager.instance.fakeLevelNumber.ToString();
+        bestScore.text = GameManager.instance.number.ToString();
     }
    
     public void SetNextLevel(int activeButtonCount)
-    {
-    // TODO remove comment
-        Debug.Log("çalıştı // count= " + activeButtonCount);
-        if (activeButtonCount <= 0 && !_levelFinish)
+    {    
+        if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= minNumberForNextLevel)
         {
-        // TODO remove comment
-            Debug.Log("if çalıştı " + activeButtonCount);
-            nextLevelButton.gameObject.SetActive(true);
+            nextLevelPanel.gameObject.SetActive(true);
             _levelFinish = true; 
+        }
+        else if (activeButtonCount <= 0 && !_levelFinish && GetComponent<BackButtonManager>().backButtonCount2 <= 0)
+        {
+            gameOverPanel.gameObject.SetActive(true);
+            _levelFinish = true;
         }
     }
     
