@@ -43,11 +43,9 @@ public class ButtonController : MonoBehaviour
     
     public void LockButton()
     {
-        ButtonManager.ButtonColorGray(gameObject);
-        GameObject o;
-        (o = gameObject).transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 15f;
+        ButtonManager.ButtonColorGreen(gameObject);
         emptytext.text = " ";
-        o.tag = "full";
+        gameObject.tag = "full";
         ButtonManager.ButtonImage(gameObject);
         lockButton = true;
         _lockButtonWrite = true;

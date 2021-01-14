@@ -8,7 +8,6 @@ public class LevelManager : MonoBehaviour
     private bool _levelFinish;
 
     public static LevelManager instance;
-    public int minNumberForNextLevel;
     public Text bestScore;
     public GameObject nextLevelPanel;
     public GameObject gameOverPanel;
@@ -28,7 +27,7 @@ public class LevelManager : MonoBehaviour
    
     public void SetNextLevel(int activeButtonCount)
     {    
-        if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= minNumberForNextLevel)
+        if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= 30)
         {
             nextLevelPanel.gameObject.SetActive(true);
             _levelFinish = true; 
