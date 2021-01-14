@@ -45,7 +45,7 @@ public class ButtonManager : MonoBehaviour
     
     public static void ButtonStart(GameObject button)
     {
-        ButtonColorwhite(button);
+        ButtonColorDirtyWhite(button);
         button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 8f;
         button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " ";
         var myselfButton = button.GetComponent<Button>();
@@ -61,7 +61,7 @@ public class ButtonManager : MonoBehaviour
     public static void ButtonColorBlue(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        var colorBlue =  new Color (0.0f, 0.75f, 1f, 1f);
+        var colorBlue =  new Color (0.3450f, 0.5019f, 0.9058f, 1f);
         colorBlock.normalColor = colorBlue;
         colorBlock.highlightedColor = Color.cyan;
         colorBlock.pressedColor = colorBlue;
@@ -70,31 +70,33 @@ public class ButtonManager : MonoBehaviour
         button.GetComponent<Button>().colors = colorBlock;
     } 
     
-    public static void ButtonColorwhite(GameObject button)
+    public static void ButtonColorDirtyWhite(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        colorBlock.normalColor = Color.white;
-        colorBlock.highlightedColor = Color.white;
-        colorBlock.pressedColor = Color.white;
-        colorBlock.selectedColor = Color.white;
-        colorBlock.disabledColor = Color.white;
+        var colorDirtyWhite = new Color(0.9333f, 0.8941f, 0.8549f, 1f);
+        colorBlock.normalColor = colorDirtyWhite;
+        colorBlock.highlightedColor = colorDirtyWhite;
+        colorBlock.pressedColor = colorDirtyWhite;
+        colorBlock.selectedColor = colorDirtyWhite;
+        colorBlock.disabledColor = colorDirtyWhite;
         button.GetComponent<Button>().colors = colorBlock;
     }
     
     public static void ButtonColorGray(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        colorBlock.normalColor = Color.gray;
-        colorBlock.highlightedColor = Color.gray;
-        colorBlock.pressedColor = Color.gray;
-        colorBlock.selectedColor = Color.gray;
-        colorBlock.disabledColor = Color.gray;
+        var colorDirtyWhiteLikePanelColor = new Color(0.7137f, 0.6941f, 0.6784f, 1f);
+        colorBlock.normalColor = colorDirtyWhiteLikePanelColor;
+        colorBlock.highlightedColor = colorDirtyWhiteLikePanelColor;
+        colorBlock.pressedColor = colorDirtyWhiteLikePanelColor;
+        colorBlock.selectedColor = colorDirtyWhiteLikePanelColor;
+        colorBlock.disabledColor = colorDirtyWhiteLikePanelColor;
         button.GetComponent<Button>().colors = colorBlock;
     }
 
     private static void ButtonColorRed(GameObject button)
     {
-        var colorRed =  new Color (0.9716981f, 0.7287736f, 0.7287736f, 1f);
+        var colorRed =  new Color (0.9607f, 0.5843f, 0.3882f, 1f);
         var colorBlock = button.GetComponent<Button>().colors;
         colorBlock.normalColor = colorRed;
         colorBlock.highlightedColor = colorRed;
@@ -106,7 +108,7 @@ public class ButtonManager : MonoBehaviour
 
     private static void ButtonColorPink(GameObject button)
     {
-        var colorPink =  new Color (0.67862f, 0.05598078f, 0.6981132f, 1f);
+        var colorPink =  new Color (0.9647f, 0.3686f, 0.2313f, 1f);
         var colorBlock = button.GetComponent<Button>().colors;
         colorBlock.normalColor = colorPink;
         colorBlock.highlightedColor = colorPink;
