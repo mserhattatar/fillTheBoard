@@ -45,7 +45,6 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.instance.SetNumber();
         ButtonManager.SetFreeButtonNumbers();
-        GameManager.instance.SetBackButtonCountNumber();
     }
 
     public void NextScene()
@@ -62,4 +61,12 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void ResetGame()
+    {
+        GameManager.instance.number = 1;
+        GameManager.instance.fakeLevelNumber = 1;
+        GameManager.instance.emptyButtonCount = 0;
+        SceneManager.LoadScene(1);
+    }
+
 }

@@ -38,12 +38,7 @@ public class ButtonController : MonoBehaviour
         LevelManager.instance.SetNextLevel(this.targetButtonList.Count);
         lockButton = true;
         startSearchPotantialNextButton = true;
-        _lockButtonWrite = true;
-        if (!setBackButtonNumber) return;
-        BackButtonManager.instance.BackButtonCountAdd();
-        setBackButtonNumber = false;
-        
-        
+        _lockButtonWrite = true;   
     }
     
     public void LockButton()
