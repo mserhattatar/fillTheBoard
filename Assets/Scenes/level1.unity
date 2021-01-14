@@ -5093,7 +5093,7 @@ PrefabInstance:
     - target: {fileID: 8108116326192132250, guid: 66e8fe026762e3047b3af7433511b9d0,
         type: 3}
       propertyPath: minNumberForNextLevel
-      value: 30
+      value: 31
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66e8fe026762e3047b3af7433511b9d0, type: 3}
