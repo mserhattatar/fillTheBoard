@@ -46,7 +46,7 @@ public class ButtonManager : MonoBehaviour
     public static void ButtonStart(GameObject button)
     {
         ButtonColorDirtyWhite(button);
-        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 8f;
+        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 16f;
         button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " ";
         var myselfButton = button.GetComponent<Button>();
         myselfButton.onClick.AddListener(button.GetComponent<ButtonController>().WriteNumber);
