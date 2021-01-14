@@ -29,7 +29,7 @@ public class ButtonController : MonoBehaviour
         if (_lockButtonWrite) return;
         
         FindButtonİndex();
-        gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 10f;
+        gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 16f;
         emptytext.text = ButtonManager.instance.number.ToString();
         ButtonManager.instance.NumberUpdate();
         gameObject.tag = "full";
