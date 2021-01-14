@@ -2,6 +2,7 @@
 
 public class BackButtonManager : MonoBehaviour
 {
+   private bool buttonOnOf;
    public int backButtonCount2;
    public static BackButtonManager instance;
    public GameObject backButton;
@@ -13,8 +14,8 @@ public class BackButtonManager : MonoBehaviour
 
    private void Start()
    {
-      backButtonCount2 = GameManager.instance.backButtonCount;
-   }
+        backButtonCount2 = 1;
+    }
 
    private void Update()
    {
@@ -22,27 +23,21 @@ public class BackButtonManager : MonoBehaviour
    }
    
    private void BackButtonOnOf()
-   { 
-      if (backButtonCount2 >= 1 && !backButton.activeInHierarchy)
-      {
-         backButton.SetActive(true);
-      }
-      else if (backButtonCount2 < 1 && backButton.activeInHierarchy)
-      {
-         backButton.SetActive(false);
-      }
+   {    
+      if (backButtonCount2 <= 0 && !buttonOnOf)
+        {
+            print(backButtonCount2 +"back button of");
+            ButtonManager.ButtonColorwhite(backButton);
+            buttonOnOf = true;
+        }
    }
-
+  
    public void BackButtonWrite()
    {
-      if (ButtonListManager.instance.WriteList.Count <= 0) return;
+        if (buttonOnOf) return;
+      if (ButtonListManager.instance.WriteList.Count <= 1) return;
       ButtonListManager.instance.WriteList[ButtonListManager.instance.WriteList.Count-1].
-         GetComponent<ButtonController>().UndoWrite();
+      GetComponent<ButtonController>().UndoWrite();
       backButtonCount2 -= 1;
-   }
-
-   public void BackButtonCountAdd()
-   {
-      backButtonCount2 += 1;
    }
 }

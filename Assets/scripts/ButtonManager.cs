@@ -31,15 +31,16 @@ public class ButtonManager : MonoBehaviour
 
     public static void ActiveButtonColor()
     {
-        // TODO add comment
-        if(ButtonListManager.instance.WriteList.Count < 0) return;
+        var _WriteList = ButtonListManager.instance.WriteList;
+
+        if (_WriteList.Count < 0) return;
         
-        ButtonColorPink(ButtonListManager.instance.WriteList[ButtonListManager.instance.WriteList.Count - 1]);
-        ButtonListManager.instance.WriteList[ButtonListManager.instance.WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
-        // TODO add comment
-        if (ButtonListManager.instance.WriteList.Count < 2) return;
+        ButtonColorPink(_WriteList[_WriteList.Count - 1]);
+        _WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
+     
+        if (_WriteList.Count < 2) return;
         
-        ButtonColorRed(ButtonListManager.instance.WriteList[ButtonListManager.instance.WriteList.Count - 2]);
+        ButtonColorRed(_WriteList[_WriteList.Count - 2]);
     }
     
     public static void ButtonStart(GameObject button)
@@ -63,6 +64,9 @@ public class ButtonManager : MonoBehaviour
         var colorBlue =  new Color (0.0f, 0.75f, 1f, 1f);
         colorBlock.normalColor = colorBlue;
         colorBlock.highlightedColor = Color.cyan;
+        colorBlock.pressedColor = colorBlue;
+        colorBlock.selectedColor = colorBlue;
+        colorBlock.disabledColor = colorBlue;
         button.GetComponent<Button>().colors = colorBlock;
     } 
     
@@ -111,17 +115,6 @@ public class ButtonManager : MonoBehaviour
         colorBlock.disabledColor = colorPink;
         button.GetComponent<Button>().colors = colorBlock;
     }
-
-    public static void SetBackButtonNumberInButtons()
-    {
-        for (int i=0; i < 1; i++)
-        {
-            int emptybuttoncount =GameManager.instance.emptyButtonCount;
-            int buttonNo = Random.Range(0, emptybuttoncount -1);
-            ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().setBackButtonNumber = true;
-        }
-    }
-    
     public static void SetFreeButtonNumbers()
     {
         GameManager.instance.emptyButtonCount = 0;
@@ -137,8 +130,7 @@ public class ButtonManager : MonoBehaviour
         for (int i=0; i<emptybuttoncount; i++)
         {
             int buttonNo = Random.Range(0, 49);
-            ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().LockButton();
-           // SetBackButtonNumberInButtons();
+            ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().LockButton();           
         }
     }
 }
