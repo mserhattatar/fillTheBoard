@@ -6,7 +6,7 @@ using Button = UnityEngine.UI.Button;
 
 public class BackButtonManager : MonoBehaviour
 {
-   [FormerlySerializedAs("_backButtonCount")] public int backButtonCount2;
+   public int backButtonCount2;
    public static BackButtonManager instance;
    public GameObject backButton;
 
@@ -27,16 +27,14 @@ public class BackButtonManager : MonoBehaviour
    
    private void BackButtonOnOf()
    { 
-      backButton.SetActive(!backButton.activeInHierarchy);
-      // TORO Remove
-      /*if (backButtonCount2 >= 1 && !backButton.activeInHierarchy)
+      if (backButtonCount2 >= 1 && !backButton.activeInHierarchy)
       {
          backButton.SetActive(true);
       }
       else if (backButtonCount2 < 1 && backButton.activeInHierarchy)
       {
          backButton.SetActive(false);
-      }*/
+      }
    }
 
    public void BackButtonWrite()

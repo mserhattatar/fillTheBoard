@@ -10,11 +10,8 @@ public class LevelManager : MonoBehaviour
 
     public static LevelManager instance;
     public GameObject nextLevelButton;
-    [HideInInspector]
-    public float levelBarFill;
-    public Image levelBar;
+    [HideInInspector]   
     public Text fakeLevelNumberUI;
-    public Text minNumberForNextLevelUI;
 
     private void Awake()
     {
@@ -23,10 +20,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        levelBarFill = 0f;
-        _minNumberForNextLevel = GameManager.instance.minNumberForNextLevelInt;
         fakeLevelNumberUI.text = GameManager.instance.fakeLevelNumber.ToString();
-        minNumberForNextLevelUI.text = _minNumberForNextLevel.ToString();
     }
    
     public void SetNextLevel(int activeButtonCount)
@@ -42,12 +36,7 @@ public class LevelManager : MonoBehaviour
         }
     }
     
-    private void LevelBarControl()
-    {
-        levelBarFill = 1f * ButtonManager.instance.number / _minNumberForNextLevel;
-        levelBar.fillAmount = levelBarFill;
-    }
-
+    
     private static void SetInGameManager()
     {
         GameManager.instance.SetNumber();
