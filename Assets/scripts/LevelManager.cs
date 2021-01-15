@@ -32,6 +32,10 @@ public class LevelManager : MonoBehaviour
             nextLevelPanel.gameObject.SetActive(true);
             _levelFinish = true; 
         }
+        else if (activeButtonCount <= 0 && !_levelFinish && GetComponent<BackButtonManager>().backButtonCount2 > 0)
+        {
+            FindObjectOfType<BackButtonManager>().StepBackAnimation();
+        }       
         else if (activeButtonCount <= 0 && !_levelFinish && GetComponent<BackButtonManager>().backButtonCount2 <= 0)
         {
             gameOverPanel.gameObject.SetActive(true);

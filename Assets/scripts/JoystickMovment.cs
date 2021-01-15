@@ -30,7 +30,7 @@ public class JoystickMovment : MonoBehaviour
 
     private void JoystickMovmentVector2()
     {
-        var joystickNewVector3 = new Vector3(_joystick.Horizontal * 10f, _joystick.Horizontal * 10f, 0);
+        var joystickNewVector3 = new Vector3(_joystick.Horizontal , _joystick.Horizontal , 0);
         _joystickMovVector3 = joystickNewVector3;
 
         JosystickControl();
@@ -38,17 +38,7 @@ public class JoystickMovment : MonoBehaviour
     }   
        
     private void JosystickControl()
-    {
-        /*
-    * sağ üst çapraz 6
-    * sağ alt çapraz 8
-    * sol üst çapraz 5
-    * sol alt çapraz 7
-    * sağ 2
-    * sol 1
-    * yukarı 3
-    * aşağı  4
-    */
+    {    
         if (_joystickMovVector3.x > 0f && _joystickMovVector3.y > 0f)
         {
             //sağ üst çapraz
@@ -78,14 +68,12 @@ public class JoystickMovment : MonoBehaviour
             if(_joystickMovVector3.x > 0f)
             {
                 //ToDo right
-                ClickTargetButton("right");
-                
+                ClickTargetButton("right");                
             }
             else
             {
                 //ToDo left
-                ClickTargetButton("left");
-               
+                ClickTargetButton("left");               
             }
         }
         else if (_joystickMovVector3.x < _joystickMovVector3.y)
@@ -93,14 +81,12 @@ public class JoystickMovment : MonoBehaviour
             if (_joystickMovVector3.y > 0f)
             {
                 //ToDo up
-                ClickTargetButton("up");
-               
+                ClickTargetButton("up");               
             }
             else
             {
                 //ToDo down
-                ClickTargetButton("down");
-                
+                ClickTargetButton("down");                
             }
         }       
     }

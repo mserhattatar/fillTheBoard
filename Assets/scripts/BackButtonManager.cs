@@ -6,8 +6,9 @@ public class BackButtonManager : MonoBehaviour
    public int backButtonCount2;
    public static BackButtonManager instance;
    public GameObject backButton;
+   public Animator anim;
 
-   private void Awake()
+    private void Awake()
    {
       instance = this;
    }
@@ -15,12 +16,13 @@ public class BackButtonManager : MonoBehaviour
    private void Start()
    {
         backButtonCount2 = 1;
+        anim = backButton.GetComponent<Animator>();
     }
 
    private void Update()
    {
       BackButtonOnOf();
-   }
+   }    
    
    private void BackButtonOnOf()
    {    
@@ -40,4 +42,9 @@ public class BackButtonManager : MonoBehaviour
       GetComponent<ButtonController>().UndoWrite();
       backButtonCount2 -= 1;
    }
+
+    public void StepBackAnimation()
+    {
+        anim.SetBool("StepBackAnimation", true);
+    }
 }
