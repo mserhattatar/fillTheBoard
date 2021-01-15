@@ -11,7 +11,7 @@ public class ButtonController : MonoBehaviour
     public bool setBackButtonNumber;
     public TextMeshProUGUI emptytext;
 
-    public Dictionary<string, GameObject> targetButtonList = new Dictionary<string, GameObject>();
+    public Dictionary<int, GameObject> targetButtonList = new Dictionary<int, GameObject>();
 
     private void Start()
     {
@@ -81,39 +81,53 @@ public class ButtonController : MonoBehaviour
     {
         // sol -- satir, sutun-3
         if (sutun - 3 >= 0)
-            AddToTargetButtonList("left", satir, sutun - 3);
+            AddToTargetButtonList((int)Direction.Left, satir, sutun - 3);
 
         // sag -- satir, sutun +3
         if (sutun + 3 < 7)
-            AddToTargetButtonList("right", satir, sutun + 3);
+            AddToTargetButtonList((int)Direction.Right, satir, sutun + 3);
 
         // yukari -- satir - 3, sutun 
         if (satir - 3 >= 0)
-            AddToTargetButtonList("up", satir - 3, sutun);
+            AddToTargetButtonList((int)Direction.Up, satir - 3, sutun);
 
         // aşağı -- satir + 3, sutun 
         if (satir + 3 < 7)
-            AddToTargetButtonList("down", satir + 3, sutun);
+            AddToTargetButtonList((int)Direction.Down, satir + 3, sutun);
 
         // sol-yukari i-2,j-2
         if (sutun - 2 >= 0 && satir - 2 >= 0)
-            AddToTargetButtonList("left-up", satir - 2, sutun - 2);
+            AddToTargetButtonList((int)Direction.LeftUp, satir - 2, sutun - 2);
 
         // sag yukari i-2, j+2
         if (sutun - 2 >= 0 && satir + 2 < 7)
-            AddToTargetButtonList("right-up", satir + 2, sutun - 2);
+            AddToTargetButtonList((int)Direction.RightUp, satir + 2, sutun - 2);
 
         // sol-aşağı i+2,j-2
         if (sutun + 2 < 7 && satir - 2 >= 0)
-            AddToTargetButtonList("left-down", satir - 2, sutun + 2);
+            AddToTargetButtonList((int)Direction.LeftDown, satir - 2, sutun + 2);
 
         // sag aşağı i+2, j+2
         if (sutun + 2 < 7 && satir + 2 < 7)
-            AddToTargetButtonList("right-down", satir + 2, sutun + 2);
+            AddToTargetButtonList((int)Direction.RightDown, satir + 2, sutun + 2);
+    }
+    enum Direction
+    {
+        Left,
+        Right,
+        Up,
+        Down,
+        LeftUp,
+        LeftDown,
+        RightUp,
+        RightDown
     }
 
-    private void AddToTargetButtonList(string direction, int satir, int sutun)
+    private void AddToTargetButtonList(int direction, int satir, int sutun)
     {
+        Debug.Log("direction" + direction);
+        Debug.Log("satır" + satir);
+        Debug.Log("sütün" + sutun);
         var target = ButtonListManager.instance.GamePlate[satir][sutun];
         if (!target.GetComponent<ButtonController>()._lockButtonWrite)
         {
@@ -132,7 +146,7 @@ public class ButtonController : MonoBehaviour
             ButtonManager.ButtonColorDirtyWhite(t);
         }
 
-        foreach (KeyValuePair<string, GameObject> t in targetButtonList)
+        foreach (KeyValuePair<int, GameObject> t in targetButtonList)
         {
             t.Value.GetComponent<ButtonController>().lockButton = false;
             ButtonManager.ButtonColorBlue(t.Value);
@@ -140,8 +154,8 @@ public class ButtonController : MonoBehaviour
         startSearchPotantialNextButton = false;
     }
 
-    private GameObject getButtonOn(string direction)
+    private GameObject getButtonOn(int direction)
     {
-        return targetButtonList["direction"];
+        return targetButtonList[direction];
     }
 }

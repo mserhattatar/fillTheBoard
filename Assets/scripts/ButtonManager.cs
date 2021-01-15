@@ -56,7 +56,7 @@ public class ButtonManager : MonoBehaviour
     {
         var carpi = Resources.Load<Sprite>("carpi");
         var suitHealth = button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
-        button.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        button.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
     }
     
     public static void ButtonColorBlue(GameObject button)

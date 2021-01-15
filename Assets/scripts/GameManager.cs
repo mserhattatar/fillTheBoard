@@ -18,8 +18,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Application.runInBackground = true;
         number = 1;
         fakeLevelNumber= 1;
+    }
+
+    private void Update()
+    {
+        if (!Application.runInBackground)
+        {
+            Application.runInBackground = true;
+        }
     }
 
     public void SetNumber()
