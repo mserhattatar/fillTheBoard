@@ -2218,7 +2218,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8108116326192132249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eca619cd11b7e6b43b61621dea798ccd, type: 3}
   m_Name: 
@@ -2373,6 +2373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backButtonCount2: 1
   backButton: {fileID: 5114936121644324678}
+  anim: {fileID: 0}
 --- !u!114 &1890291088999704368
 MonoBehaviour:
   m_ObjectHideFlags: 0
