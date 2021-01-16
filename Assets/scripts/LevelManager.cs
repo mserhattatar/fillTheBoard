@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     private bool _levelFinish;
+    private Animator _NextLEvelAni;
+    private Animator _GameOverAni;
+    private int _minWriteNumberForNextLevel;
+
 
     public static LevelManager instance;
     public Text bestScore;
@@ -13,6 +17,8 @@ public class LevelManager : MonoBehaviour
     public GameObject gameOverPanel;
     [HideInInspector]   
     public Text fakeLevelNumberUI;
+
+    
 
     private void Awake()
     {
@@ -23,13 +29,30 @@ public class LevelManager : MonoBehaviour
     {
         fakeLevelNumberUI.text = GameManager.instance.fakeLevelNumber.ToString();
         bestScore.text = GameManager.instance.number.ToString();
+        _NextLEvelAni = nextLevelPanel.GetComponent<Animator>();
+        _GameOverAni = gameOverPanel.GetComponent<Animator>();
+
+        _minWriteNumberForNextLevel = 20;
+        if (GameManager.instance.fakeLevelNumber > 6)
+        {
+            _minWriteNumberForNextLevel = 30;
+            if(GameManager.instance.fakeLevelNumber > 9)
+            {
+                _minWriteNumberForNextLevel = 35;
+            }
+        }
     }
    
     public void SetNextLevel(int activeButtonCount)
-    {    
-        if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= 30)
+    {
+        if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= _minWriteNumberForNextLevel && GetComponent<BackButtonManager>().backButtonCount2 > 0)
         {
-            nextLevelPanel.gameObject.SetActive(true);
+            FindObjectOfType<BackButtonManager>().StepBackAnimation();
+        }
+        else if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= _minWriteNumberForNextLevel)
+        {
+            nextLevelPanel.SetActive(true);
+            _NextLEvelAni.SetBool("isNextLevel", true);
             _levelFinish = true; 
         }
         else if (activeButtonCount <= 0 && !_levelFinish && GetComponent<BackButtonManager>().backButtonCount2 > 0)
@@ -38,7 +61,8 @@ public class LevelManager : MonoBehaviour
         }       
         else if (activeButtonCount <= 0 && !_levelFinish && GetComponent<BackButtonManager>().backButtonCount2 <= 0)
         {
-            gameOverPanel.gameObject.SetActive(true);
+            gameOverPanel.SetActive(true);
+            _GameOverAni.SetBool("isGameOver", true);
             _levelFinish = true;
         }
     }
@@ -47,7 +71,7 @@ public class LevelManager : MonoBehaviour
     private static void SetInGameManager()
     {
         GameManager.instance.SetNumber();
-        ButtonManager.SetFreeButtonNumbers();
+        ButtonManager.SetFreeButtonNumbers(); 
     }
 
     public void NextScene()
@@ -70,6 +94,11 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.fakeLevelNumber = 1;
         GameManager.instance.emptyButtonCount = 0;
         SceneManager.LoadScene(1);
+    }
+
+    public void ExitGame1()
+    {
+        Application.Quit();
     }
 
 }

@@ -55,8 +55,10 @@ public class ButtonManager : MonoBehaviour
     public static void ButtonImage(GameObject button)
     {
         var carpi = Resources.Load<Sprite>("carpi");
-        var suitHealth = button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
+        button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
         button.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+        ButtonColorGray(button);
+
     }
     
     public static void ButtonColorBlue(GameObject button)
@@ -85,7 +87,8 @@ public class ButtonManager : MonoBehaviour
     public static void ButtonColorGreen(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        var colorGreen = new Color(0.5490f, 0.5529f, 0.4235f, 1f);
+        
+        var colorGreen = new Color(0.0745f, 0.5411f, 0.4235f, 1f);
         colorBlock.normalColor = colorGreen;
         colorBlock.highlightedColor = colorGreen;
         colorBlock.pressedColor = colorGreen;
@@ -97,7 +100,7 @@ public class ButtonManager : MonoBehaviour
     public static void ButtonColorGray(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        var colorDirtyWhiteLikePanelColor = new Color(0.0745f, 0.5411f, 0.4235f, 1f);
+        var colorDirtyWhiteLikePanelColor = new Color(0.5490f, 0.5529f, 0.4235f, 1f);
         colorBlock.normalColor = colorDirtyWhiteLikePanelColor;
         colorBlock.highlightedColor = colorDirtyWhiteLikePanelColor;
         colorBlock.pressedColor = colorDirtyWhiteLikePanelColor;

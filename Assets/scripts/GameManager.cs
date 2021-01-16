@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject);            
         }
         else
         {
@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
         fakeLevelNumber= 1;
     }
 
+    private void Start()
+    {
+        GetvalueFromGameData();
+    }
     private void Update()
     {
         if (!Application.runInBackground)
@@ -35,11 +39,26 @@ public class GameManager : MonoBehaviour
     {
         number = ButtonManager.instance.number;
         MinNumberForNextLevel();
+        SaveGameNow();
     }
+    public void SaveGameNow()
+    {
+        SaveSysteam.SaveGame(this);
+    }
+
+    public void GetvalueFromGameData()
+    {
+        GameData data = SaveSysteam.LoadGame();
+        number = data.number;
+        fakeLevelNumber = data.fakeLevelNumber;
+        emptyButtonCount = data.emptyButtonCount;
+    }
+
 
     private void MinNumberForNextLevel()
     {
       
         fakeLevelNumber += 1;
     }
+
 }

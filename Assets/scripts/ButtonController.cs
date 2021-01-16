@@ -42,8 +42,7 @@ public class ButtonController : MonoBehaviour
     }
     
     public void LockButton()
-    {
-        ButtonManager.ButtonColorGreen(gameObject);
+    {        
         emptytext.text = " ";
         gameObject.tag = "full";
         ButtonManager.ButtonImage(gameObject);
@@ -76,9 +75,15 @@ public class ButtonController : MonoBehaviour
             }
         }
     }
-
+    /*
+                SUTUN(X)
+      SATIR(Y) 1234567
+               123X567      
+    
+     */
     private void FindPotantialTargetButton(int satir, int sutun)
     {
+        targetButtonList.Clear();
         // sol -- satir, sutun-3
         if (sutun - 3 >= 0)
             AddToTargetButtonList((int)Direction.Left, satir, sutun - 3);
@@ -95,20 +100,22 @@ public class ButtonController : MonoBehaviour
         if (satir + 3 < 7)
             AddToTargetButtonList((int)Direction.Down, satir + 3, sutun);
 
-        // sol-yukari i-2,j-2
-        if (sutun - 2 >= 0 && satir - 2 >= 0)
+
+
+        // sol-yukari 
+        if (satir - 2 >= 0 && sutun - 2 >= 0 )
             AddToTargetButtonList((int)Direction.LeftUp, satir - 2, sutun - 2);
 
-        // sag yukari i-2, j+2
-        if (sutun - 2 >= 0 && satir + 2 < 7)
-            AddToTargetButtonList((int)Direction.RightUp, satir + 2, sutun - 2);
+        // sag yukari
+        if (satir - 2 >= 0 && sutun + 2 < 7)
+            AddToTargetButtonList((int)Direction.RightUp, satir - 2, sutun + 2);
 
-        // sol-aşağı i+2,j-2
-        if (sutun + 2 < 7 && satir - 2 >= 0)
-            AddToTargetButtonList((int)Direction.LeftDown, satir - 2, sutun + 2);
+        // sol-aşağı 
+        if (satir + 2 < 7 && sutun - 2 >= 0)
+            AddToTargetButtonList((int)Direction.LeftDown, satir + 2, sutun - 2);
 
-        // sag aşağı i+2, j+2
-        if (sutun + 2 < 7 && satir + 2 < 7)
+        // sag aşağı
+        if (satir + 2 < 7 && sutun + 2 < 7)
             AddToTargetButtonList((int)Direction.RightDown, satir + 2, sutun + 2);
     }
     enum Direction
