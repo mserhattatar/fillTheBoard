@@ -4,8 +4,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public int number;
-    public int emptyButtonCount;    
+    public int emptyButtonAmountAtLevelEnd;    
     public int fakeLevelNumber;
+    public int bestScoreNumber;
     
     private void Awake()
     {
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         Application.runInBackground = true;
         number = 1;
         fakeLevelNumber= 1;
+        bestScoreNumber = 0;
     }
 
     private void Start()
@@ -38,6 +40,10 @@ public class GameManager : MonoBehaviour
     public void SetNumber()
     {
         number = ButtonManager.instance.number;
+        if(bestScoreNumber < number)
+        {
+            bestScoreNumber = number - 1;
+        }        
         MinNumberForNextLevel();
         SaveGameNow();
     }
@@ -51,7 +57,8 @@ public class GameManager : MonoBehaviour
         GameData data = SaveSysteam.LoadGame();
         number = data.number;
         fakeLevelNumber = data.fakeLevelNumber;
-        emptyButtonCount = data.emptyButtonCount;
+        emptyButtonAmountAtLevelEnd = data.emptyButtonCount;
+        bestScoreNumber = data.bestCoreNumber;
     }
 
 

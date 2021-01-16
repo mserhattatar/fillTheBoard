@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         fakeLevelNumberUI.text = GameManager.instance.fakeLevelNumber.ToString();
-        bestScore.text = GameManager.instance.number.ToString();
+        bestScore.text = GameManager.instance.bestScoreNumber.ToString();
         _NextLEvelAni = nextLevelPanel.GetComponent<Animator>();
         _GameOverAni = gameOverPanel.GetComponent<Animator>();
 
@@ -71,7 +71,7 @@ public class LevelManager : MonoBehaviour
     private static void SetInGameManager()
     {
         GameManager.instance.SetNumber();
-        ButtonManager.SetFreeButtonNumbers(); 
+        ButtonManager.SetEmptyButtonAmount(); 
     }
 
     public void NextScene()
@@ -92,13 +92,8 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.instance.number = 1;
         GameManager.instance.fakeLevelNumber = 1;
-        GameManager.instance.emptyButtonCount = 0;
+        GameManager.instance.emptyButtonAmountAtLevelEnd = 0;       
         SceneManager.LoadScene(1);
-    }
-
-    public void ExitGame1()
-    {
-        Application.Quit();
     }
 
 }

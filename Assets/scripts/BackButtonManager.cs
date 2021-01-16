@@ -22,14 +22,18 @@ public class BackButtonManager : MonoBehaviour
    private void Update()
    {
       BackButtonOnOf();
+
+       
    }    
    
    private void BackButtonOnOf()
    {    
       if (backButtonCount2 <= 0 && !buttonOnOf)
         {
+            anim.SetBool("StepBackAnimation", false);
             print(backButtonCount2 +"back button of");
-            ButtonManager.ButtonColorDirtyWhite(backButton);
+            ButtonManager.ButtonColorGrey(backButton);
+            backButton.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().color = new Color(0.6132f, 0.6132f, 0.6132f, 1f);
             buttonOnOf = true;
         }
    }

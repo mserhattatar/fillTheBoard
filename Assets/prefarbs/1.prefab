@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8205887134884248012}
   - component: {fileID: 7061982571412809389}
   - component: {fileID: 8036615217566541263}
+  - component: {fileID: 8742053586962961128}
   m_Layer: 5
   m_Name: 1
   m_TagString: empty
@@ -147,7 +148,25 @@ MonoBehaviour:
   startSearchPotantialNextButton: 0
   setBackButtonNumber: 0
   emptytext: {fileID: 2706565737232815614}
-  targetButtonList: []
+--- !u!95 &8742053586962961128
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19336545013950597}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3983b02e71ab18f479a5f0dd10ccf2e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &593865312634825889
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using Button = UnityEngine.UI.Button;
 using Random = UnityEngine.Random;
@@ -37,9 +38,12 @@ public class ButtonManager : MonoBehaviour
         
         ButtonColorPink(_WriteList[_WriteList.Count - 1]);
         _WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
-     
+        //_WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().SetActiveButtonCollor(true);
+
+
         if (_WriteList.Count < 2) return;
-        
+
+        //_WriteList[_WriteList.Count - 2].GetComponent<ButtonController>().SetActiveButtonCollor(false);
         ButtonColorRed(_WriteList[_WriteList.Count - 2]);
     }
     
@@ -57,7 +61,7 @@ public class ButtonManager : MonoBehaviour
         var carpi = Resources.Load<Sprite>("carpi");
         button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
         button.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-        ButtonColorGray(button);
+        ButtonColorDirtyWhite(button);
 
     }
     
@@ -96,16 +100,16 @@ public class ButtonManager : MonoBehaviour
         colorBlock.disabledColor = colorGreen;
         button.GetComponent<Button>().colors = colorBlock;
     }
-
-    public static void ButtonColorGray(GameObject button)
+    public static void ButtonColorGrey(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        var colorDirtyWhiteLikePanelColor = new Color(0.5490f, 0.5529f, 0.4235f, 1f);
-        colorBlock.normalColor = colorDirtyWhiteLikePanelColor;
-        colorBlock.highlightedColor = colorDirtyWhiteLikePanelColor;
-        colorBlock.pressedColor = colorDirtyWhiteLikePanelColor;
-        colorBlock.selectedColor = colorDirtyWhiteLikePanelColor;
-        colorBlock.disabledColor = colorDirtyWhiteLikePanelColor;
+
+        var colorGrey = new Color(0.4150f, 0.4150f, 0.4150f, 0.2627f);
+        colorBlock.normalColor = colorGrey;
+        colorBlock.highlightedColor = colorGrey;
+        colorBlock.pressedColor = colorGrey;
+        colorBlock.selectedColor = colorGrey;
+        colorBlock.disabledColor = colorGrey;
         button.GetComponent<Button>().colors = colorBlock;
     }
 
@@ -132,22 +136,25 @@ public class ButtonManager : MonoBehaviour
         colorBlock.disabledColor = colorPink;
         button.GetComponent<Button>().colors = colorBlock;
     }
-    public static void SetFreeButtonNumbers()
+    public static void SetEmptyButtonAmount()
     {
-        GameManager.instance.emptyButtonCount = 0;
-        foreach (var FreeButton in GameObject.FindGameObjectsWithTag("empty"))
-        {
-            GameManager.instance.emptyButtonCount += 1;
-        }
+        GameManager.instance.emptyButtonAmountAtLevelEnd = GameObject.FindGameObjectsWithTag("empty").Length;
+        
     }
     
     private static void BlockButton()
     {
-        int emptybuttoncount =GameManager.instance.emptyButtonCount;
-        for (int i=0; i<emptybuttoncount; i++)
+        int EmptyButtonAmount =GameManager.instance.emptyButtonAmountAtLevelEnd;
+
+        while(EmptyButtonAmount > 0)
         {
-            int buttonNo = Random.Range(0, 49);
-            ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().LockButton();           
-        }
+            int randomNo = Random.Range(0, 49);
+
+            if (!ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().lockButton)
+            {
+                ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().LockButton();
+                EmptyButtonAmount--;
+            }
+        }       
     }
 }

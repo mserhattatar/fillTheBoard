@@ -6,6 +6,8 @@ public class ButtonController : MonoBehaviour
 {
     private int _gameObjectİndex;
     private bool _lockButtonWrite;
+    private Animator _ButtonAnimator;
+
     public bool lockButton;
     public bool startSearchPotantialNextButton;
     public bool setBackButtonNumber;
@@ -15,7 +17,8 @@ public class ButtonController : MonoBehaviour
 
     private void Start()
     {
-        ButtonManager.ButtonStart(gameObject); 
+        ButtonManager.ButtonStart(gameObject);
+        _ButtonAnimator = this.GetComponent<Animator>();
     }
     
     private void Update()
@@ -60,6 +63,10 @@ public class ButtonController : MonoBehaviour
         ButtonListManager.instance.WriteList.RemoveAt(ButtonListManager.instance.WriteList.Count - 1);
         ButtonManager.ActiveButtonColor();
     }
+    public void SetActiveButtonCollor(bool active)
+    {
+        _ButtonAnimator.SetBool("isActiveButtonCollor", active);
+    }
    
     private void FindButtonİndex()
     {
@@ -76,7 +83,7 @@ public class ButtonController : MonoBehaviour
         }
     }
     /*
-                SUTUN(X)
+               SUTUN(X)
       SATIR(Y) 1234567
                123X567      
     
