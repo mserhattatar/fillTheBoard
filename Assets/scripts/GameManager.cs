@@ -3,9 +3,13 @@
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    [HideInInspector]
     public int number;
+    [HideInInspector]
     public int emptyButtonAmountAtLevelEnd;    
+    [HideInInspector]
     public int fakeLevelNumber;
+    [HideInInspector]
     public int bestScoreNumber;
     
     private void Awake()
@@ -13,16 +17,21 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);            
+            DontDestroyOnLoad(gameObject);
+            Debug.Log("gamemanger oluştu");
         }
         else
         {
             Destroy(gameObject);
+            return;
         }
         Application.runInBackground = true;
         number = 1;
         fakeLevelNumber= 1;
         bestScoreNumber = 0;
+        FindObjectOfType<MainMenuPanelManager>().OpenMainMenuPanel();
+        Debug.Log("gamemanger çalıştı");
+
     }
 
     private void Start()
@@ -37,21 +46,37 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void SetNumber()
+    public void ResetGame()
+    {
+       number = 1;
+       fakeLevelNumber = 1;
+       emptyButtonAmountAtLevelEnd = 0;
+       SaveGameNow();
+
+    }
+    public void LevelComplete()
     {
         number = ButtonManager.instance.number;
-        if(bestScoreNumber < number)
+        SetBestScore();
+        FakeLevelNumberIncrease();
+        ButtonManager.SetEmptyButtonAmount();
+        SaveGameNow();
+    }
+    private void SetBestScore()
+    {
+        if (bestScoreNumber < number)
         {
             bestScoreNumber = number - 1;
-        }        
-        MinNumberForNextLevel();
-        SaveGameNow();
+        }
     }
     public void SaveGameNow()
     {
         SaveSysteam.SaveGame(this);
+    }    
+    private void FakeLevelNumberIncrease()
+    {      
+        fakeLevelNumber += 1;
     }
-
     public void GetvalueFromGameData()
     {
         GameData data = SaveSysteam.LoadGame();
@@ -59,13 +84,6 @@ public class GameManager : MonoBehaviour
         fakeLevelNumber = data.fakeLevelNumber;
         emptyButtonAmountAtLevelEnd = data.emptyButtonCount;
         bestScoreNumber = data.bestCoreNumber;
-    }
-
-
-    private void MinNumberForNextLevel()
-    {
-      
-        fakeLevelNumber += 1;
     }
 
 }

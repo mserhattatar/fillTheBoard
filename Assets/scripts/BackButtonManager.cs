@@ -31,7 +31,6 @@ public class BackButtonManager : MonoBehaviour
       if (backButtonCount2 <= 0 && !buttonOnOf)
         {
             anim.SetBool("StepBackAnimation", false);
-            print(backButtonCount2 +"back button of");
             ButtonManager.ButtonColorGrey(backButton);
             backButton.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().color = new Color(0.6132f, 0.6132f, 0.6132f, 1f);
             buttonOnOf = true;

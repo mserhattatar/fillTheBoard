@@ -138,10 +138,7 @@ public class ButtonController : MonoBehaviour
     }
 
     private void AddToTargetButtonList(int direction, int satir, int sutun)
-    {
-        Debug.Log("direction" + direction);
-        Debug.Log("satır" + satir);
-        Debug.Log("sütün" + sutun);
+    {        
         var target = ButtonListManager.instance.GamePlate[satir][sutun];
         if (!target.GetComponent<ButtonController>()._lockButtonWrite)
         {
