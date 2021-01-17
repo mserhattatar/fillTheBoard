@@ -5,17 +5,16 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
-    public int number;
+    public int numberToDisplay;
     public int emptyButtonCount;
-    public int fakeLevelNumber;
+    public int levelNumberToDisplay;
     public int bestCoreNumber;
 
     public GameData(GameManager gameManager)
     {
-        number = gameManager.number;
+        numberToDisplay = gameManager.numberToDisplay;
         emptyButtonCount = gameManager.emptyButtonAmountAtLevelEnd;
-        fakeLevelNumber = gameManager.fakeLevelNumber;
+        levelNumberToDisplay = gameManager.levelNumberToDisplay;
         bestCoreNumber = gameManager.bestScoreNumber;
-}
-
+    }
 }

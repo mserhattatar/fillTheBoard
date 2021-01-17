@@ -6,7 +6,7 @@ public class BackButtonManager : MonoBehaviour
    public int backButtonCount2;
    public static BackButtonManager instance;
    public GameObject backButton;
-   public Animator anim;
+   private Animator anim;
 
     private void Awake()
    {

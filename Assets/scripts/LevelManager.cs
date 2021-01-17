@@ -27,25 +27,15 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        fakeLevelNumberUI.text = GameManager.instance.fakeLevelNumber.ToString();
+        fakeLevelNumberUI.text = GameManager.instance.levelNumberToDisplay.ToString();
         bestScore.text = GameManager.instance.bestScoreNumber.ToString();
         _NextLEvelAni = nextLevelPanel.GetComponent<Animator>();
         _GameOverAni = gameOverPanel.GetComponent<Animator>();
-
-        _minWriteNumberForNextLevel = 20;
-        if (GameManager.instance.fakeLevelNumber > 6)
-        {
-            _minWriteNumberForNextLevel = 30;
-            if(GameManager.instance.fakeLevelNumber > 9)
-            {
-                _minWriteNumberForNextLevel = 35;
-            }
-        }
+        _minWriteNumberForNextLevel = (ButtonListManager.instance.Button1.Count * ButtonListManager.instance.Button1.Count) -20;       
     }
    
     public void SetNextLevel(int activeButtonCount)
     {
-
         if(ButtonListManager.instance.WriteList.Count >= 2)
         {
             var writeList = ButtonListManager.instance.WriteList;
@@ -85,12 +75,14 @@ public class LevelManager : MonoBehaviour
     public void NextScene()
     {
         GameManager.instance.LevelComplete();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 
-        int levelNumber = SceneManager.GetActiveScene().buildIndex;
-        if (1 == SceneManager.sceneCountInBuildSettings)
-            SceneManager.LoadScene(0);
-        else
-            SceneManager.LoadScene(1);
+
+        //int levelNumber = SceneManager.GetActiveScene().buildIndex;
+        //if (1 == SceneManager.sceneCountInBuildSettings)
+        //    SceneManager.LoadScene(0);
+        //else
+        //    SceneManager.LoadScene(1);
     }
     
     public void RetryScene()
@@ -100,6 +92,11 @@ public class LevelManager : MonoBehaviour
     public void ResetGame()
     {
         GameManager.instance.ResetGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(0);
+    }
+    public void GoToMainMenu()
+    {
         SceneManager.LoadScene(0);
     }
 

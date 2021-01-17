@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using Button = UnityEngine.UI.Button;
 using Random = UnityEngine.Random;
@@ -16,7 +15,8 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        number = GameManager.instance.number;
+        SetNumberButtonFontSize();
+        number = GameManager.instance.numberToDisplay;
         BlockButton();
     }
 
@@ -47,15 +47,38 @@ public class ButtonManager : MonoBehaviour
         ButtonColorRed(_WriteList[_WriteList.Count - 2]);
     }
     
+    
     public static void ButtonStart(GameObject button)
     {
-        ButtonColorDirtyWhite(button);
-        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 16f;
+        ButtonColorDirtyWhite(button);        
         button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " ";
         var myselfButton = button.GetComponent<Button>();
         myselfButton.onClick.AddListener(button.GetComponent<ButtonController>().WriteNumber);
     }
-    
+    public static void SetNumberButtonFontSize()
+    {
+        float size = 7;
+        switch (ButtonListManager.instance.Button1.Count)
+        {
+            case 7:
+                size = 15;
+                break;
+            case 8:
+                size = 13;
+                break;
+            case 9:
+                size = 11;
+                break;
+            case 10:
+                size = 8;
+                break;
+        }
+        foreach (var button in ButtonListManager.instance.EmtyNumberButton)
+        {
+            button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = size;
+        }        
+    }
+
     public static void ButtonImage(GameObject button)
     {
         var carpi = Resources.Load<Sprite>("carpi");
@@ -147,7 +170,24 @@ public class ButtonManager : MonoBehaviour
 
         while(EmptyButtonAmount > 0)
         {
-            int randomNo = Random.Range(0, 49);
+            int _max = 7;
+            switch (ButtonListManager.instance.Button1.Count)
+            {
+                case 7:
+                    _max = 49;
+                    break;
+                case 8:
+                    _max = 64;
+                    break;
+                case 9:
+                    _max = 81;
+                    break;
+                case 10:
+                    _max = 100;
+                    break;
+            }
+
+            int randomNo = Random.Range(0, _max);
 
             if (!ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().lockButton)
             {

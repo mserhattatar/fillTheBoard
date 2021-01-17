@@ -1,18 +1,54 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuPanelManager : MonoBehaviour
 {
     public GameObject InfoPanel;
     public GameObject MainMenu;
 
-    public void OpenMainMenuPanel()
+    public GameObject Button8x8;
+    public GameObject Button9x9;
+    public GameObject Button10x10;
+
+
+
+    private void Start()
+    {        
+        var bestScore = GameManager.instance.bestScoreNumber;
+        
+        if (bestScore >= 810)
+        {
+            Button10x10.GetComponent<Button>().interactable = true;
+        }
+        else if (bestScore >= 640)
+        {
+            Button9x9.GetComponent<Button>().interactable = true;
+        }       
+        else if (bestScore >= 490)
+        {
+            Button8x8.GetComponent<Button>().interactable = true;
+        }
+    }   
+
+    public void StartGame7x7()
     {
-        MainMenu.SetActive(true);
+        SceneManager.LoadScene(1);
     }
-    public void CloseMainMenuPanel()
+    public void StartGame8x8()
+    {       
+        SceneManager.LoadScene(2);
+    }
+    public void StartGame9x9()
     {
-        MainMenu.SetActive(false);
+        SceneManager.LoadScene(3);
     }
+    public void StartGame10x10()
+    {
+        SceneManager.LoadScene(4);
+    }
+
+
     public void OpenInfoPanel()
     {
         InfoPanel.SetActive(true);

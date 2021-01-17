@@ -26,6 +26,7 @@ public class ButtonController : MonoBehaviour
        NextButtons();
     }
 
+   
     public void WriteNumber()
     {
         if (lockButton) return;
@@ -33,7 +34,6 @@ public class ButtonController : MonoBehaviour
         lockButton = true;
         _lockButtonWrite = true;
         FindButtonİndex();
-        gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 16f;
         emptytext.text = ButtonManager.instance.number.ToString();
         ButtonManager.instance.NumberUpdate();
         gameObject.tag = "full";
@@ -90,13 +90,31 @@ public class ButtonController : MonoBehaviour
      */
     private void FindPotantialTargetButton(int satir, int sutun)
     {
+        int _max =7;
+        switch(ButtonListManager.instance.Button1.Count)
+        {
+            case 7:
+                _max = 7;
+                break;
+            case 8:
+                _max = 8;
+                break;
+            case 9:
+                _max = 9;
+                break;
+            case 10:
+                _max = 10;
+                break;            
+        }
+
+
         targetButtonList.Clear();
         // sol -- satir, sutun-3
         if (sutun - 3 >= 0)
             AddToTargetButtonList((int)Direction.Left, satir, sutun - 3);
 
         // sag -- satir, sutun +3
-        if (sutun + 3 < 7)
+        if (sutun + 3 < _max)
             AddToTargetButtonList((int)Direction.Right, satir, sutun + 3);
 
         // yukari -- satir - 3, sutun 
@@ -104,7 +122,7 @@ public class ButtonController : MonoBehaviour
             AddToTargetButtonList((int)Direction.Up, satir - 3, sutun);
 
         // aşağı -- satir + 3, sutun 
-        if (satir + 3 < 7)
+        if (satir + 3 < _max)
             AddToTargetButtonList((int)Direction.Down, satir + 3, sutun);
 
 
@@ -114,15 +132,15 @@ public class ButtonController : MonoBehaviour
             AddToTargetButtonList((int)Direction.LeftUp, satir - 2, sutun - 2);
 
         // sag yukari
-        if (satir - 2 >= 0 && sutun + 2 < 7)
+        if (satir - 2 >= 0 && sutun + 2 < _max)
             AddToTargetButtonList((int)Direction.RightUp, satir - 2, sutun + 2);
 
         // sol-aşağı 
-        if (satir + 2 < 7 && sutun - 2 >= 0)
+        if (satir + 2 < _max && sutun - 2 >= 0)
             AddToTargetButtonList((int)Direction.LeftDown, satir + 2, sutun - 2);
 
         // sag aşağı
-        if (satir + 2 < 7 && sutun + 2 < 7)
+        if (satir + 2 < _max && sutun + 2 < _max)
             AddToTargetButtonList((int)Direction.RightDown, satir + 2, sutun + 2);
     }
     enum Direction

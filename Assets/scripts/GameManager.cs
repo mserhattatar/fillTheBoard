@@ -4,13 +4,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     [HideInInspector]
-    public int number;
+    public int numberToDisplay = 1;
     [HideInInspector]
-    public int emptyButtonAmountAtLevelEnd;    
+    public int emptyButtonAmountAtLevelEnd = 0;    
     [HideInInspector]
-    public int fakeLevelNumber;
+    public int levelNumberToDisplay = 1;
     [HideInInspector]
-    public int bestScoreNumber;
+    public int bestScoreNumber = 0;
     
     private void Awake()
     {
@@ -18,65 +18,66 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log("gamemanger oluştu");
         }
         else
         {
             Destroy(gameObject);
             return;
         }
-        Application.runInBackground = true;
-        number = 1;
-        fakeLevelNumber= 1;
-        bestScoreNumber = 0;
-        FindObjectOfType<MainMenuPanelManager>().OpenMainMenuPanel();
+        
+        //Application.runInBackground = true;
+        
+        // Set 
+        //numberToDisplay = 1;
+        //levelNumberToDisplay = 1;
+        //bestScoreNumber = 0;
+        
         GetvalueFromGameData();
-        Debug.Log("game manger çalıştı");
     }
-    private void Update()
-    {
-        if (!Application.runInBackground)
-        {
-            Application.runInBackground = true;
-        }
-    }
+    //private void Update()
+    //{
+    //    if (!Application.runInBackground)
+    //    {
+    //        Application.runInBackground = true;
+    //    }
+    //}
+    //private void Start()
+    //{
+    //    Debug.Log("numberToDisplay" + numberToDisplay );
+    //}
 
     public void ResetGame()
     {
-       number = 1;
-       fakeLevelNumber = 1;
+       numberToDisplay = 1;
+       levelNumberToDisplay = 1;
        emptyButtonAmountAtLevelEnd = 0;
        SaveGameNow();
 
     }
     public void LevelComplete()
     {
-        number = ButtonManager.instance.number;
+        numberToDisplay = ButtonManager.instance.number;
         SetBestScore();
-        FakeLevelNumberIncrease();
+        levelNumberToDisplay += 1;
         ButtonManager.SetEmptyButtonAmount();
         SaveGameNow();
     }
     private void SetBestScore()
     {
-        if (bestScoreNumber < number)
+        if (bestScoreNumber < numberToDisplay)
         {
-            bestScoreNumber = number - 1;
+            bestScoreNumber = numberToDisplay - 1;
         }
     }
     public void SaveGameNow()
     {
         SaveSysteam.SaveGame(this);
-    }    
-    private void FakeLevelNumberIncrease()
-    {      
-        fakeLevelNumber += 1;
-    }
+    }       
     public void GetvalueFromGameData()
     {
         GameData data = SaveSysteam.LoadGame();
-        number = data.number;
-        fakeLevelNumber = data.fakeLevelNumber;
+        numberToDisplay = data.numberToDisplay;
+        levelNumberToDisplay = data.levelNumberToDisplay;
         emptyButtonAmountAtLevelEnd = data.emptyButtonCount;
         bestScoreNumber = data.bestCoreNumber;
     }
