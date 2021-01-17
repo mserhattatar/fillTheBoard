@@ -139,7 +139,6 @@ public class ButtonManager : MonoBehaviour
     public static void SetEmptyButtonAmount()
     {
         GameManager.instance.emptyButtonAmountAtLevelEnd = GameObject.FindGameObjectsWithTag("empty").Length;
-        
     }
     
     private static void BlockButton()

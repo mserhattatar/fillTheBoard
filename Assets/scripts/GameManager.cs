@@ -30,13 +30,8 @@ public class GameManager : MonoBehaviour
         fakeLevelNumber= 1;
         bestScoreNumber = 0;
         FindObjectOfType<MainMenuPanelManager>().OpenMainMenuPanel();
-        Debug.Log("gamemanger çalıştı");
-
-    }
-
-    private void Start()
-    {
         GetvalueFromGameData();
+        Debug.Log("game manger çalıştı");
     }
     private void Update()
     {
@@ -85,5 +80,4 @@ public class GameManager : MonoBehaviour
         emptyButtonAmountAtLevelEnd = data.emptyButtonCount;
         bestScoreNumber = data.bestCoreNumber;
     }
-
 }
