@@ -1,5 +1,4 @@
-﻿using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using Button = UnityEngine.UI.Button;
 using Random = UnityEngine.Random;
 
@@ -46,14 +45,14 @@ public class ButtonManager : MonoBehaviour
     public static void ButtonStart(GameObject button)
     {
         ButtonColorDirtyWhite(button);        
-        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " ";
+        button.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = " ";
         var myselfButton = button.GetComponent<Button>();
         myselfButton.onClick.AddListener(button.GetComponent<ButtonController>().WriteNumber);
     }
     public static void SetNumberButtonFontSize(GameObject button)
     {
-        float size = 7;
-        float minus =0;
+        int size = 7;
+        int minus =0;
         int N = instance.numberToDisplay;
         if (N >= 0)
         {
@@ -84,7 +83,7 @@ public class ButtonManager : MonoBehaviour
                 break;
         }
         
-        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = size;               
+        button.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().fontSize = size;               
     }
 
     public static void ButtonImage(GameObject button)
