@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -147,7 +147,6 @@ MonoBehaviour:
   startSearchPotantialNextButton: 0
   setBackButtonNumber: 0
   emptytext: {fileID: 2706565737232815614}
-  targetButtonList: []
 --- !u!1 &593865312634825889
 GameObject:
   m_ObjectHideFlags: 0

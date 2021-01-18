@@ -6,6 +6,10 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     private bool _levelFinish;
+    private Animator _NextLEvelAni;
+    private Animator _GameOverAni;
+    private int _minWriteNumberForNextLevel;
+
 
     public static LevelManager instance;
     public Text bestScore;
@@ -14,6 +18,8 @@ public class LevelManager : MonoBehaviour
     [HideInInspector]   
     public Text fakeLevelNumberUI;
 
+    
+
     private void Awake()
     {
         instance = this;
@@ -21,39 +27,62 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        fakeLevelNumberUI.text = GameManager.instance.fakeLevelNumber.ToString();
-        bestScore.text = GameManager.instance.number.ToString();
+        fakeLevelNumberUI.text = GameManager.instance.levelNumberToDisplay.ToString();
+        bestScore.text = GameManager.instance.bestScoreNumber.ToString();
+        _NextLEvelAni = nextLevelPanel.GetComponent<Animator>();
+        _GameOverAni = gameOverPanel.GetComponent<Animator>();
+        _minWriteNumberForNextLevel = (ButtonListManager.instance.Button1.Count * ButtonListManager.instance.Button1.Count) -20;       
     }
    
     public void SetNextLevel(int activeButtonCount)
-    {    
-        if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= 30)
+    {
+        if(ButtonListManager.instance.WriteList.Count >= 2)
         {
-            nextLevelPanel.gameObject.SetActive(true);
+            var writeList = ButtonListManager.instance.WriteList;
+            var firstButton = writeList[writeList.Count - 1].GetComponent<ButtonController>().targetButtonList.Count;
+            var secondButton = writeList[writeList.Count - 2].GetComponent<ButtonController>().targetButtonList.Count;
+
+            if (firstButton <= 0 && secondButton <= 1)
+            {
+                nextLevelPanel.SetActive(true);
+                _NextLEvelAni.SetBool("isNextLevel", true);
+                _levelFinish = true;
+            }
+        }       
+        if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= _minWriteNumberForNextLevel && GetComponent<BackButtonManager>().backButtonCount2 > 0)
+        {
+            FindObjectOfType<BackButtonManager>().StepBackAnimation();
+        }
+        else if (activeButtonCount <= 0 && !_levelFinish && ButtonListManager.instance.WriteList.Count >= _minWriteNumberForNextLevel)
+        {
+            nextLevelPanel.SetActive(true);
+            _NextLEvelAni.SetBool("isNextLevel", true);
             _levelFinish = true; 
         }
+        else if (activeButtonCount <= 0 && !_levelFinish && GetComponent<BackButtonManager>().backButtonCount2 > 0)
+        {
+            FindObjectOfType<BackButtonManager>().StepBackAnimation();
+        }       
         else if (activeButtonCount <= 0 && !_levelFinish && GetComponent<BackButtonManager>().backButtonCount2 <= 0)
         {
-            gameOverPanel.gameObject.SetActive(true);
+            gameOverPanel.SetActive(true);
+            _GameOverAni.SetBool("isGameOver", true);
             _levelFinish = true;
         }
-    }
-    
-    
-    private static void SetInGameManager()
-    {
-        GameManager.instance.SetNumber();
-        ButtonManager.SetFreeButtonNumbers();
-    }
+    }   
 
+    //Butoons Fonction
     public void NextScene()
     {
-        SetInGameManager();
-        int levelNumber = SceneManager.GetActiveScene().buildIndex;
-        if (levelNumber + 1 == SceneManager.sceneCountInBuildSettings)
-            SceneManager.LoadScene(1);
-        else
-            SceneManager.LoadScene(levelNumber + 1);
+        GameManager.instance.LevelComplete();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+
+
+        //int levelNumber = SceneManager.GetActiveScene().buildIndex;
+        //if (1 == SceneManager.sceneCountInBuildSettings)
+        //    SceneManager.LoadScene(0);
+        //else
+        //    SceneManager.LoadScene(1);
     }
     
     public void RetryScene()
@@ -62,10 +91,13 @@ public class LevelManager : MonoBehaviour
     }
     public void ResetGame()
     {
-        GameManager.instance.number = 1;
-        GameManager.instance.fakeLevelNumber = 1;
-        GameManager.instance.emptyButtonCount = 0;
-        SceneManager.LoadScene(1);
+        GameManager.instance.ResetGame();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(0);
+    }
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
 }

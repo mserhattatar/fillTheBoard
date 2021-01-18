@@ -6,7 +6,8 @@ using Random = UnityEngine.Random;
 public class ButtonManager : MonoBehaviour
 {
     public static ButtonManager instance; 
-    public int number;
+    [HideInInspector]
+    public int numberToDisplay;
     
     private void Awake()
     {
@@ -15,48 +16,84 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        number = GameManager.instance.number;
+        numberToDisplay = GameManager.instance.numberToDisplay;
         BlockButton();
     }
 
     public void NumberUpdate()
     {
-        number += 1;
+        numberToDisplay += 1;
     }
 
     public void NumberBack()
     {
-        number -= 1;
+        numberToDisplay -= 1;
     }
 
     public static void ActiveButtonColor()
     {
         var _WriteList = ButtonListManager.instance.WriteList;
 
-        if (_WriteList.Count < 0) return;
-        
+        if (_WriteList.Count < 0) return;        
         ButtonColorPink(_WriteList[_WriteList.Count - 1]);
         _WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
-     
+       
         if (_WriteList.Count < 2) return;
-        
         ButtonColorRed(_WriteList[_WriteList.Count - 2]);
     }
     
+    
     public static void ButtonStart(GameObject button)
     {
-        ButtonColorDirtyWhite(button);
-        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 16f;
+        ButtonColorDirtyWhite(button);        
         button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = " ";
         var myselfButton = button.GetComponent<Button>();
         myselfButton.onClick.AddListener(button.GetComponent<ButtonController>().WriteNumber);
     }
-    
+    public static void SetNumberButtonFontSize(GameObject button)
+    {
+        float size = 7;
+        float minus =0;
+        int N = instance.numberToDisplay;
+        if (N >= 0)
+        {
+            if(N > 10000)
+                minus = 4;
+            else if (N > 1000)
+                minus = 3;
+            else if (N > 100)
+                minus = 2;
+            else if (N > 10)
+                minus = 1;
+            else 
+                minus = 0;
+        }
+        switch (ButtonListManager.instance.Button1.Count)
+        {
+            case 7:
+                size = 18 - minus;
+                break;
+            case 8:
+                size = 16 - minus;
+                break;
+            case 9:
+                size = 14 - minus;
+                break;
+            case 10:
+                size = 14 - minus;
+                break;
+        }
+        
+        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = size;               
+    }
+
     public static void ButtonImage(GameObject button)
     {
         var carpi = Resources.Load<Sprite>("carpi");
-        var suitHealth = button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
-        button.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
+        button.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+        ButtonColorDirtyWhite(button);
+
     }
     
     public static void ButtonColorBlue(GameObject button)
@@ -85,7 +122,8 @@ public class ButtonManager : MonoBehaviour
     public static void ButtonColorGreen(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        var colorGreen = new Color(0.5490f, 0.5529f, 0.4235f, 1f);
+        
+        var colorGreen = new Color(0.0745f, 0.5411f, 0.4235f, 1f);
         colorBlock.normalColor = colorGreen;
         colorBlock.highlightedColor = colorGreen;
         colorBlock.pressedColor = colorGreen;
@@ -93,16 +131,16 @@ public class ButtonManager : MonoBehaviour
         colorBlock.disabledColor = colorGreen;
         button.GetComponent<Button>().colors = colorBlock;
     }
-
-    public static void ButtonColorGray(GameObject button)
+    public static void ButtonColorGrey(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
-        var colorDirtyWhiteLikePanelColor = new Color(0.0745f, 0.5411f, 0.4235f, 1f);
-        colorBlock.normalColor = colorDirtyWhiteLikePanelColor;
-        colorBlock.highlightedColor = colorDirtyWhiteLikePanelColor;
-        colorBlock.pressedColor = colorDirtyWhiteLikePanelColor;
-        colorBlock.selectedColor = colorDirtyWhiteLikePanelColor;
-        colorBlock.disabledColor = colorDirtyWhiteLikePanelColor;
+
+        var colorGrey = new Color(0.4150f, 0.4150f, 0.4150f, 0.2627f);
+        colorBlock.normalColor = colorGrey;
+        colorBlock.highlightedColor = colorGrey;
+        colorBlock.pressedColor = colorGrey;
+        colorBlock.selectedColor = colorGrey;
+        colorBlock.disabledColor = colorGrey;
         button.GetComponent<Button>().colors = colorBlock;
     }
 
@@ -129,22 +167,41 @@ public class ButtonManager : MonoBehaviour
         colorBlock.disabledColor = colorPink;
         button.GetComponent<Button>().colors = colorBlock;
     }
-    public static void SetFreeButtonNumbers()
+    public static void SetEmptyButtonAmount()
     {
-        GameManager.instance.emptyButtonCount = 0;
-        foreach (var FreeButton in GameObject.FindGameObjectsWithTag("empty"))
-        {
-            GameManager.instance.emptyButtonCount += 1;
-        }
+        GameManager.instance.emptyButtonAmountAtLevelEnd = GameObject.FindGameObjectsWithTag("empty").Length;
     }
     
     private static void BlockButton()
     {
-        int emptybuttoncount =GameManager.instance.emptyButtonCount;
-        for (int i=0; i<emptybuttoncount; i++)
+        int EmptyButtonAmount =GameManager.instance.emptyButtonAmountAtLevelEnd;
+
+        while(EmptyButtonAmount > 0)
         {
-            int buttonNo = Random.Range(0, 49);
-            ButtonListManager.instance.EmtyNumberButton[buttonNo].GetComponent<ButtonController>().LockButton();           
-        }
+            int _max = 7;
+            switch (ButtonListManager.instance.Button1.Count)
+            {
+                case 7:
+                    _max = 49;
+                    break;
+                case 8:
+                    _max = 64;
+                    break;
+                case 9:
+                    _max = 81;
+                    break;
+                case 10:
+                    _max = 100;
+                    break;
+            }
+
+            int randomNo = Random.Range(0, _max);
+
+            if (!ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().lockButton)
+            {
+                ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().LockButton();
+                EmptyButtonAmount--;
+            }
+        }       
     }
 }

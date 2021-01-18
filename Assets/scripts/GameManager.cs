@@ -3,9 +3,14 @@
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int number;
-    public int emptyButtonCount;    
-    public int fakeLevelNumber;
+    [HideInInspector]
+    public int numberToDisplay = 1;
+    [HideInInspector]
+    public int emptyButtonAmountAtLevelEnd = 0;    
+    [HideInInspector]
+    public int levelNumberToDisplay = 1;
+    [HideInInspector]
+    public int bestScoreNumber = 0;
     
     private void Awake()
     {
@@ -17,20 +22,63 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
-        number = 1;
-        fakeLevelNumber= 1;
+        
+        //Application.runInBackground = true;
+        
+        // Set 
+        //numberToDisplay = 1;
+        //levelNumberToDisplay = 1;
+        //bestScoreNumber = 0;
+        
+        GetvalueFromGameData();
     }
+    //private void Update()
+    //{
+    //    if (!Application.runInBackground)
+    //    {
+    //        Application.runInBackground = true;
+    //    }
+    //}
+    //private void Start()
+    //{
+    //    Debug.Log("numberToDisplay" + numberToDisplay );
+    //}
 
-    public void SetNumber()
+    public void ResetGame()
     {
-        number = ButtonManager.instance.number;
-        MinNumberForNextLevel();
+       numberToDisplay = 1;
+       levelNumberToDisplay = 1;
+       emptyButtonAmountAtLevelEnd = 0;
+       SaveGameNow();
+
     }
-
-    private void MinNumberForNextLevel()
+    public void LevelComplete()
     {
-      
-        fakeLevelNumber += 1;
+        numberToDisplay = ButtonManager.instance.numberToDisplay;
+        SetBestScore();
+        levelNumberToDisplay += 1;
+        ButtonManager.SetEmptyButtonAmount();
+        SaveGameNow();
+    }
+    private void SetBestScore()
+    {
+        if (bestScoreNumber < numberToDisplay)
+        {
+            bestScoreNumber = numberToDisplay - 1;
+        }
+    }
+    public void SaveGameNow()
+    {
+        SaveSysteam.SaveGame(this);
+    }       
+    public void GetvalueFromGameData()
+    {
+        GameData data = SaveSysteam.LoadGame();
+        numberToDisplay = data.numberToDisplay;
+        levelNumberToDisplay = data.levelNumberToDisplay;
+        emptyButtonAmountAtLevelEnd = data.emptyButtonCount;
+        bestScoreNumber = data.bestCoreNumber;
     }
 }

@@ -6,16 +6,22 @@ public class ButtonController : MonoBehaviour
 {
     private int _gameObjectİndex;
     private bool _lockButtonWrite;
+    private Animator _ButtonAnimator;
+
+    [HideInInspector]
     public bool lockButton;
+    [HideInInspector]
     public bool startSearchPotantialNextButton;
+    [HideInInspector]
     public bool setBackButtonNumber;
     public TextMeshProUGUI emptytext;
 
-    public Dictionary<string, GameObject> targetButtonList = new Dictionary<string, GameObject>();
+    public Dictionary<int, GameObject> targetButtonList = new Dictionary<int, GameObject>();
 
     private void Start()
     {
-        ButtonManager.ButtonStart(gameObject); 
+        ButtonManager.ButtonStart(gameObject);
+        _ButtonAnimator = this.GetComponent<Animator>();
     }
     
     private void Update()
@@ -23,6 +29,7 @@ public class ButtonController : MonoBehaviour
        NextButtons();
     }
 
+   
     public void WriteNumber()
     {
         if (lockButton) return;
@@ -30,8 +37,8 @@ public class ButtonController : MonoBehaviour
         lockButton = true;
         _lockButtonWrite = true;
         FindButtonİndex();
-        gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = 16f;
-        emptytext.text = ButtonManager.instance.number.ToString();
+        ButtonManager.SetNumberButtonFontSize(gameObject);
+        emptytext.text = ButtonManager.instance.numberToDisplay.ToString();
         ButtonManager.instance.NumberUpdate();
         gameObject.tag = "full";
         ButtonListManager.instance.WriteList.Add(gameObject);
@@ -42,8 +49,7 @@ public class ButtonController : MonoBehaviour
     }
     
     public void LockButton()
-    {
-        ButtonManager.ButtonColorGreen(gameObject);
+    {        
         emptytext.text = " ";
         gameObject.tag = "full";
         ButtonManager.ButtonImage(gameObject);
@@ -61,6 +67,10 @@ public class ButtonController : MonoBehaviour
         ButtonListManager.instance.WriteList.RemoveAt(ButtonListManager.instance.WriteList.Count - 1);
         ButtonManager.ActiveButtonColor();
     }
+    public void SetActiveButtonCollor(bool active)
+    {
+        _ButtonAnimator.SetBool("isActiveButtonCollor", active);
+    }
    
     private void FindButtonİndex()
     {
@@ -76,44 +86,81 @@ public class ButtonController : MonoBehaviour
             }
         }
     }
-
+    /*
+               SUTUN(X)
+      SATIR(Y) 1234567
+               123X567      
+    
+     */
     private void FindPotantialTargetButton(int satir, int sutun)
     {
+        int _max =7;
+        switch(ButtonListManager.instance.Button1.Count)
+        {
+            case 7:
+                _max = 7;
+                break;
+            case 8:
+                _max = 8;
+                break;
+            case 9:
+                _max = 9;
+                break;
+            case 10:
+                _max = 10;
+                break;            
+        }
+
+
+        targetButtonList.Clear();
         // sol -- satir, sutun-3
         if (sutun - 3 >= 0)
-            AddToTargetButtonList("left", satir, sutun - 3);
+            AddToTargetButtonList((int)Direction.Left, satir, sutun - 3);
 
         // sag -- satir, sutun +3
-        if (sutun + 3 < 7)
-            AddToTargetButtonList("right", satir, sutun + 3);
+        if (sutun + 3 < _max)
+            AddToTargetButtonList((int)Direction.Right, satir, sutun + 3);
 
         // yukari -- satir - 3, sutun 
         if (satir - 3 >= 0)
-            AddToTargetButtonList("up", satir - 3, sutun);
+            AddToTargetButtonList((int)Direction.Up, satir - 3, sutun);
 
         // aşağı -- satir + 3, sutun 
-        if (satir + 3 < 7)
-            AddToTargetButtonList("down", satir + 3, sutun);
+        if (satir + 3 < _max)
+            AddToTargetButtonList((int)Direction.Down, satir + 3, sutun);
 
-        // sol-yukari i-2,j-2
-        if (sutun - 2 >= 0 && satir - 2 >= 0)
-            AddToTargetButtonList("left-up", satir - 2, sutun - 2);
 
-        // sag yukari i-2, j+2
-        if (sutun - 2 >= 0 && satir + 2 < 7)
-            AddToTargetButtonList("right-up", satir + 2, sutun - 2);
 
-        // sol-aşağı i+2,j-2
-        if (sutun + 2 < 7 && satir - 2 >= 0)
-            AddToTargetButtonList("left-down", satir - 2, sutun + 2);
+        // sol-yukari 
+        if (satir - 2 >= 0 && sutun - 2 >= 0 )
+            AddToTargetButtonList((int)Direction.LeftUp, satir - 2, sutun - 2);
 
-        // sag aşağı i+2, j+2
-        if (sutun + 2 < 7 && satir + 2 < 7)
-            AddToTargetButtonList("right-down", satir + 2, sutun + 2);
+        // sag yukari
+        if (satir - 2 >= 0 && sutun + 2 < _max)
+            AddToTargetButtonList((int)Direction.RightUp, satir - 2, sutun + 2);
+
+        // sol-aşağı 
+        if (satir + 2 < _max && sutun - 2 >= 0)
+            AddToTargetButtonList((int)Direction.LeftDown, satir + 2, sutun - 2);
+
+        // sag aşağı
+        if (satir + 2 < _max && sutun + 2 < _max)
+            AddToTargetButtonList((int)Direction.RightDown, satir + 2, sutun + 2);
+    }
+    enum Direction
+    {
+        Left,
+        Right,
+        Up,
+        Down,
+        LeftUp,
+        LeftDown,
+        RightUp,
+        RightDown
     }
 
-    private void AddToTargetButtonList(string direction, int satir, int sutun)
-    {
+    private void AddToTargetButtonList(int direction, int satir, int sutun)
+    {        
         var target = ButtonListManager.instance.GamePlate[satir][sutun];
         if (!target.GetComponent<ButtonController>()._lockButtonWrite)
         {
@@ -132,7 +179,7 @@ public class ButtonController : MonoBehaviour
             ButtonManager.ButtonColorDirtyWhite(t);
         }
 
-        foreach (KeyValuePair<string, GameObject> t in targetButtonList)
+        foreach (KeyValuePair<int, GameObject> t in targetButtonList)
         {
             t.Value.GetComponent<ButtonController>().lockButton = false;
             ButtonManager.ButtonColorBlue(t.Value);
@@ -140,8 +187,8 @@ public class ButtonController : MonoBehaviour
         startSearchPotantialNextButton = false;
     }
 
-    private GameObject getButtonOn(string direction)
+    private GameObject getButtonOn(int direction)
     {
-        return targetButtonList["direction"];
+        return targetButtonList[direction];
     }
 }

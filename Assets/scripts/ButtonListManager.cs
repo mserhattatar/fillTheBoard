@@ -12,10 +12,15 @@ public class ButtonListManager : MonoBehaviour
     public List<GameObject> Button4 = new List<GameObject>();
     public List<GameObject> Button5 = new List<GameObject>();
     public List<GameObject> Button6 = new List<GameObject>();
-    public List<GameObject> Button7 = new List<GameObject>(); 
-    
+    public List<GameObject> Button7 = new List<GameObject>();
+    public List<GameObject> Button8 = new List<GameObject>();
+    public List<GameObject> Button9 = new List<GameObject>();
+    public List<GameObject> Button10 = new List<GameObject>();
+
+
     public List<GameObject> EmtyNumberButton = new List<GameObject>();
     public List<List<GameObject>> GamePlate = new List<List<GameObject>>();
+    [HideInInspector]
     public List<GameObject> WriteList = new List<GameObject>();
     
     private void Awake()
@@ -33,5 +38,8 @@ public class ButtonListManager : MonoBehaviour
         GamePlate.Add(Button5);
         GamePlate.Add(Button6);
         GamePlate.Add(Button7);
+        GamePlate.Add(Button8);
+        GamePlate.Add(Button9);
+        GamePlate.Add(Button10);
     }
 }
