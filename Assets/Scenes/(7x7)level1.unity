@@ -216,31 +216,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 743163445841274114, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1152322551280550416, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: m_text
-      value: 9999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1152322551280550416, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1152322551280550416, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3158020781109998105, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -86.5
-      objectReference: {fileID: 0}
     - target: {fileID: 4257660428991223265, guid: 66e8fe026762e3047b3af7433511b9d0,
         type: 3}
       propertyPath: m_Pivot.x
@@ -351,30 +326,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: 7x7Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8108116326192132250, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: Confetti
-      value: 
-      objectReference: {fileID: 81060900846224253, guid: ae26d5cbf5921624fa20eeecc1999da7,
-        type: 3}
-    - target: {fileID: 8108116326192132250, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: ConfettiTransform
-      value: 
-      objectReference: {fileID: 928069485}
-    - target: {fileID: 8108116326673299514, guid: 66e8fe026762e3047b3af7433511b9d0,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -6.200001
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66e8fe026762e3047b3af7433511b9d0, type: 3}
---- !u!224 &928069485 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 8108116326005320525, guid: 66e8fe026762e3047b3af7433511b9d0,
-    type: 3}
-  m_PrefabInstance: {fileID: 928069484}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1023286104
 PrefabInstance:
   m_ObjectHideFlags: 0

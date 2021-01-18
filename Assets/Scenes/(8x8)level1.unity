@@ -216,6 +216,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 8x8Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1242249316690748168, guid: 3e9580a54318cec4591c95b4533a504b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -6.200001
+      objectReference: {fileID: 0}
     - target: {fileID: 5362380708765903147, guid: 3e9580a54318cec4591c95b4533a504b,
         type: 3}
       propertyPath: m_AnchoredPosition.y
