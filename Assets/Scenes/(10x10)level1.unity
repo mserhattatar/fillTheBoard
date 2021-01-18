@@ -5105,6 +5105,41 @@ PrefabInstance:
       propertyPath: m_Name
       value: 10x10Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 6575251574525520119, guid: b3c682dfa2b857d4589c48e89df8a05f,
+        type: 3}
+      propertyPath: m_text
+      value: 10x10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575251574525520119, guid: b3c682dfa2b857d4589c48e89df8a05f,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 141.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575251574525520119, guid: b3c682dfa2b857d4589c48e89df8a05f,
+        type: 3}
+      propertyPath: m_margin.w
+      value: -8.485107
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575251574525520119, guid: b3c682dfa2b857d4589c48e89df8a05f,
+        type: 3}
+      propertyPath: m_margin.y
+      value: -23.758545
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575251574525520119, guid: b3c682dfa2b857d4589c48e89df8a05f,
+        type: 3}
+      propertyPath: m_margin.z
+      value: -166.20343
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575251574525520119, guid: b3c682dfa2b857d4589c48e89df8a05f,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 141.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575251574525520119, guid: b3c682dfa2b857d4589c48e89df8a05f,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7775901780284565287, guid: b3c682dfa2b857d4589c48e89df8a05f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -5209,6 +5244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9065343197006940112, guid: b3c682dfa2b857d4589c48e89df8a05f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 34.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3c682dfa2b857d4589c48e89df8a05f, type: 3}

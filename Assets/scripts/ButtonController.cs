@@ -8,8 +8,11 @@ public class ButtonController : MonoBehaviour
     private bool _lockButtonWrite;
     private Animator _ButtonAnimator;
 
+    [HideInInspector]
     public bool lockButton;
+    [HideInInspector]
     public bool startSearchPotantialNextButton;
+    [HideInInspector]
     public bool setBackButtonNumber;
     public TextMeshProUGUI emptytext;
 
@@ -34,7 +37,8 @@ public class ButtonController : MonoBehaviour
         lockButton = true;
         _lockButtonWrite = true;
         FindButtonİndex();
-        emptytext.text = ButtonManager.instance.number.ToString();
+        ButtonManager.SetNumberButtonFontSize(gameObject);
+        emptytext.text = ButtonManager.instance.numberToDisplay.ToString();
         ButtonManager.instance.NumberUpdate();
         gameObject.tag = "full";
         ButtonListManager.instance.WriteList.Add(gameObject);

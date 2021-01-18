@@ -5105,6 +5105,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 9x9Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4718836615897690344, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
+        type: 3}
+      propertyPath: m_text
+      value: 9x9
+      objectReference: {fileID: 0}
     - target: {fileID: 8190602855022575416, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
         type: 3}
       propertyPath: m_Pivot.x

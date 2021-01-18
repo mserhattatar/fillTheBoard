@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     }
     public void LevelComplete()
     {
-        numberToDisplay = ButtonManager.instance.number;
+        numberToDisplay = ButtonManager.instance.numberToDisplay;
         SetBestScore();
         levelNumberToDisplay += 1;
         ButtonManager.SetEmptyButtonAmount();

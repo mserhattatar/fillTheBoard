@@ -6,7 +6,8 @@ using Random = UnityEngine.Random;
 public class ButtonManager : MonoBehaviour
 {
     public static ButtonManager instance; 
-    public int number;
+    [HideInInspector]
+    public int numberToDisplay;
     
     private void Awake()
     {
@@ -15,35 +16,29 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        SetNumberButtonFontSize();
-        number = GameManager.instance.numberToDisplay;
+        numberToDisplay = GameManager.instance.numberToDisplay;
         BlockButton();
     }
 
     public void NumberUpdate()
     {
-        number += 1;
+        numberToDisplay += 1;
     }
 
     public void NumberBack()
     {
-        number -= 1;
+        numberToDisplay -= 1;
     }
 
     public static void ActiveButtonColor()
     {
         var _WriteList = ButtonListManager.instance.WriteList;
 
-        if (_WriteList.Count < 0) return;
-        
+        if (_WriteList.Count < 0) return;        
         ButtonColorPink(_WriteList[_WriteList.Count - 1]);
         _WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
-        //_WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().SetActiveButtonCollor(true);
-
-
+       
         if (_WriteList.Count < 2) return;
-
-        //_WriteList[_WriteList.Count - 2].GetComponent<ButtonController>().SetActiveButtonCollor(false);
         ButtonColorRed(_WriteList[_WriteList.Count - 2]);
     }
     
@@ -55,28 +50,41 @@ public class ButtonManager : MonoBehaviour
         var myselfButton = button.GetComponent<Button>();
         myselfButton.onClick.AddListener(button.GetComponent<ButtonController>().WriteNumber);
     }
-    public static void SetNumberButtonFontSize()
+    public static void SetNumberButtonFontSize(GameObject button)
     {
         float size = 7;
+        float minus =0;
+        int N = instance.numberToDisplay;
+        if (N >= 0)
+        {
+            if(N > 10000)
+                minus = 4;
+            else if (N > 1000)
+                minus = 3;
+            else if (N > 100)
+                minus = 2;
+            else if (N > 10)
+                minus = 1;
+            else 
+                minus = 0;
+        }
         switch (ButtonListManager.instance.Button1.Count)
         {
             case 7:
-                size = 15;
+                size = 18 - minus;
                 break;
             case 8:
-                size = 13;
+                size = 16 - minus;
                 break;
             case 9:
-                size = 11;
+                size = 14 - minus;
                 break;
             case 10:
-                size = 8;
+                size = 14 - minus;
                 break;
         }
-        foreach (var button in ButtonListManager.instance.EmtyNumberButton)
-        {
-            button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = size;
-        }        
+        
+        button.transform.GetChild(0).GetComponent<TextMeshProUGUI>().fontSize = size;               
     }
 
     public static void ButtonImage(GameObject button)
