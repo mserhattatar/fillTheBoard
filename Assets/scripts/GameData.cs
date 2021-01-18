@@ -1,20 +1,24 @@
-﻿using System.Collections;
+﻿
 using System.Collections.Generic;
-using UnityEngine;
 
 [System.Serializable]
 public class GameData
 {
-    public int numberToDisplay;
-    public int emptyButtonCount;
-    public int levelNumberToDisplay;
-    public int bestCoreNumber;
+    public Dictionary<int, int> numberToDisplayDictionary = new Dictionary<int, int>();
+   
+    public Dictionary<int, int> emptyButtonAmountAtLevelEndDictionary = new Dictionary<int, int>();
+    
+    public Dictionary<int, int> levelNumberToDisplayDictionary = new Dictionary<int, int>();
+   
+    public Dictionary<int, int> bestScoreNumberDictionary = new Dictionary<int, int>();
+
+
 
     public GameData(GameManager gameManager)
     {
-        numberToDisplay = gameManager.numberToDisplay;
-        emptyButtonCount = gameManager.emptyButtonAmountAtLevelEnd;
-        levelNumberToDisplay = gameManager.levelNumberToDisplay;
-        bestCoreNumber = gameManager.bestScoreNumber;
+        numberToDisplayDictionary = gameManager.numberToDisplayDictionary;
+        emptyButtonAmountAtLevelEndDictionary = gameManager.emptyButtonAmountAtLevelEndDictionary;
+        levelNumberToDisplayDictionary = gameManager.levelNumberToDisplayDictionary;
+        bestScoreNumberDictionary = gameManager.bestScoreNumberDictionary;
     }
 }

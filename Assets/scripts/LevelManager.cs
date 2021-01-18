@@ -28,8 +28,8 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        fakeLevelNumberUI.text = GameManager.instance.levelNumberToDisplay.ToString();
-        bestScore.text = GameManager.instance.bestScoreNumber.ToString();
+        fakeLevelNumberUI.text = GameManager.instance.levelNumberToDisplayDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();
+        bestScore.text = GameManager.instance.bestScoreNumberDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();
         _NextLEvelAni = nextLevelPanel.GetComponent<Animator>();
         _GameOverAni = gameOverPanel.GetComponent<Animator>();
         _minWriteNumberForNextLevel = (ButtonListManager.instance.Button1.Count * ButtonListManager.instance.Button1.Count) -20;       
