@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class ButtonController : MonoBehaviour
     public bool startSearchPotantialNextButton;
     [HideInInspector]
     public bool setBackButtonNumber;
-    public TextMeshProUGUI emptytext;
+    public Text emptytext;
 
     public Dictionary<int, GameObject> targetButtonList = new Dictionary<int, GameObject>();
 
@@ -175,7 +175,7 @@ public class ButtonController : MonoBehaviour
         foreach (var t in GameObject.FindGameObjectsWithTag("empty"))
         {
             t.GetComponent<ButtonController>().lockButton = true;
-            t.transform.GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.black;
+            t.transform.GetChild(0).GetComponent<Text>().color = Color.black;
             ButtonManager.ButtonColorDirtyWhite(t);
         }
 

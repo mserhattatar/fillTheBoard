@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,8 +8,10 @@ public class LevelManager : MonoBehaviour
     private Animator _NextLEvelAni;
     private Animator _GameOverAni;
     private int _minWriteNumberForNextLevel;
+    private bool _confettiAdded;
 
-
+    public GameObject completeLevelIcon;
+    public GameObject Confetti;
     public static LevelManager instance;
     public Text bestScore;
     public GameObject nextLevelPanel;
@@ -33,6 +34,7 @@ public class LevelManager : MonoBehaviour
         _GameOverAni = gameOverPanel.GetComponent<Animator>();
         _minWriteNumberForNextLevel = (ButtonListManager.instance.Button1.Count * ButtonListManager.instance.Button1.Count) -20;       
     }
+
    
     public void SetNextLevel(int activeButtonCount)
     {
@@ -68,6 +70,12 @@ public class LevelManager : MonoBehaviour
             gameOverPanel.SetActive(true);
             _GameOverAni.SetBool("isGameOver", true);
             _levelFinish = true;
+        }
+        else if (!_confettiAdded && ButtonListManager.instance.WriteList.Count >= _minWriteNumberForNextLevel)
+        {
+            _confettiAdded = true;
+            Instantiate(Confetti,new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
+            completeLevelIcon.SetActive(true);
         }
     }   
 
