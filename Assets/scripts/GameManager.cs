@@ -4,21 +4,16 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-   
-    [HideInInspector]
-    public Dictionary<int, int> numberToDisplayDictionary = new Dictionary<int, int>();
-    [HideInInspector]
-    public Dictionary<int, int> emptyButtonAmountAtLevelEndDictionary = new Dictionary<int, int>();
-    [HideInInspector]
-    public Dictionary<int, int> levelNumberToDisplayDictionary = new Dictionary<int, int>();
-    [HideInInspector]
-    public Dictionary<int, int> bestScoreNumberDictionary = new Dictionary<int, int>();
+
+
+    public GameData gameData;
 
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            gameData = new GameData(this);
             DontDestroyOnLoad(gameObject);
             InitGameDataDict();
         }
@@ -32,30 +27,30 @@ public class GameManager : MonoBehaviour
    
     private void InitGameDataDict()
     {
-        if (numberToDisplayDictionary.Keys.Count > 0) return;
+        if (gameData.numberToDisplayDictionary.Keys.Count > 0) return;
         foreach (var gameIndex in new List<int> { 7, 8, 9, 10 })
         {
-            numberToDisplayDictionary.Add(gameIndex, 1);
-            emptyButtonAmountAtLevelEndDictionary.Add(gameIndex, 0);
-            levelNumberToDisplayDictionary.Add(gameIndex, 1);
-            bestScoreNumberDictionary.Add(gameIndex, 0);
+            gameData.numberToDisplayDictionary.Add(gameIndex, 1);
+            gameData.emptyButtonAmountAtLevelEndDictionary.Add(gameIndex, 0);
+            gameData.levelNumberToDisplayDictionary.Add(gameIndex, 1);
+            gameData.bestScoreNumberDictionary.Add(gameIndex, 0);
         }
     }
     public void ResetGame()
     {
         int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
-        numberToDisplayDictionary[_LevelMatrix] = 1;
-        levelNumberToDisplayDictionary[_LevelMatrix] = 1;
-        emptyButtonAmountAtLevelEndDictionary[_LevelMatrix] = 1;
+        gameData.numberToDisplayDictionary[_LevelMatrix] = 1;
+        gameData.levelNumberToDisplayDictionary[_LevelMatrix] = 1;
+        gameData.emptyButtonAmountAtLevelEndDictionary[_LevelMatrix] = 0;
         SaveGameNow();
 
     }
     public void LevelComplete()
     {
         int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
-        numberToDisplayDictionary[_LevelMatrix] = ButtonManager.instance.numberToDisplay;
+        gameData.numberToDisplayDictionary[_LevelMatrix] = ButtonManager.instance.numberToDisplay;
         SetBestScore();
-        levelNumberToDisplayDictionary[_LevelMatrix] += 1;
+        gameData.levelNumberToDisplayDictionary[_LevelMatrix] += 1;
         ButtonManager.instance.SetEmptyButtonAmount();
         SaveGameNow();
     }
@@ -63,9 +58,9 @@ public class GameManager : MonoBehaviour
     {
         int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
 
-        if (bestScoreNumberDictionary[_LevelMatrix] < numberToDisplayDictionary[_LevelMatrix])
+        if (gameData.bestScoreNumberDictionary[_LevelMatrix] < gameData.numberToDisplayDictionary[_LevelMatrix])
         {
-            bestScoreNumberDictionary[_LevelMatrix] = numberToDisplayDictionary[_LevelMatrix] - 1;
+            gameData.bestScoreNumberDictionary[_LevelMatrix] = gameData.numberToDisplayDictionary[_LevelMatrix] - 1;
         }
     }
     public void SaveGameNow()
@@ -78,13 +73,11 @@ public class GameManager : MonoBehaviour
 
         if (data == null ||
             data.bestScoreNumberDictionary == null ||
-            data.bestScoreNumberDictionary.ContainsKey(7)) return;
-
-
-        numberToDisplayDictionary = data.numberToDisplayDictionary;
-        emptyButtonAmountAtLevelEndDictionary = data.emptyButtonAmountAtLevelEndDictionary;
-        levelNumberToDisplayDictionary = data.levelNumberToDisplayDictionary;
-        bestScoreNumberDictionary = data.bestScoreNumberDictionary;
-
+            !data.bestScoreNumberDictionary.ContainsKey(7))
+        {
+            FindObjectOfType<MainMenuPanelManager>().OpenInfoPanel();
+            return;
+        }
+        gameData = data;        
     }
 }

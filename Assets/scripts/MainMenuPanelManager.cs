@@ -20,7 +20,7 @@ public class MainMenuPanelManager : MonoBehaviour
 
     private void Start()
     {
-        var data = GameManager.instance;
+        var data = GameManager.instance.gameData;
 
         if (data.bestScoreNumberDictionary[10] >= 1000)
         {
@@ -31,12 +31,12 @@ public class MainMenuPanelManager : MonoBehaviour
             Button10x10.GetComponent<Button>().interactable = true;
             Compleate9x9.SetActive(true);
         }
-        else if (data.bestScoreNumberDictionary[8] >= 640)
+        if (data.bestScoreNumberDictionary[8] >= 640)
         {
             Button9x9.GetComponent<Button>().interactable = true;
             Compleate8x8.SetActive(true);
         }       
-        else if (data.bestScoreNumberDictionary[7] >= 490)
+        if (data.bestScoreNumberDictionary[7] >= 490)
         {
             Button8x8.GetComponent<Button>().interactable = true;
             Compleate7x7.SetActive(true);
@@ -59,8 +59,6 @@ public class MainMenuPanelManager : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
-
-
     public void OpenInfoPanel()
     {
         InfoPanel.SetActive(true);

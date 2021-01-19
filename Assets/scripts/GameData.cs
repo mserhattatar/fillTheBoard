@@ -16,9 +16,6 @@ public class GameData
 
     public GameData(GameManager gameManager)
     {
-        numberToDisplayDictionary = gameManager.numberToDisplayDictionary;
-        emptyButtonAmountAtLevelEndDictionary = gameManager.emptyButtonAmountAtLevelEndDictionary;
-        levelNumberToDisplayDictionary = gameManager.levelNumberToDisplayDictionary;
-        bestScoreNumberDictionary = gameManager.bestScoreNumberDictionary;
+        
     }
 }

@@ -17,7 +17,7 @@ public class ButtonManager : MonoBehaviour
     private void Start()
     {
         FindLevelMatrix();
-        numberToDisplay = GameManager.instance.numberToDisplayDictionary[LevelButtonMatrix];
+        numberToDisplay = GameManager.instance.gameData.numberToDisplayDictionary[LevelButtonMatrix];
         BlockButton();
     }
    
@@ -189,12 +189,12 @@ public class ButtonManager : MonoBehaviour
     }
     public void SetEmptyButtonAmount()
     {
-        GameManager.instance.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix] = GameObject.FindGameObjectsWithTag("empty").Length;
+        GameManager.instance.gameData.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix] = GameObject.FindGameObjectsWithTag("empty").Length;
     }
     
     private void BlockButton()
     {
-        int EmptyButtonAmount = GameManager.instance.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix];
+        int EmptyButtonAmount = GameManager.instance.gameData.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix];
 
         while(EmptyButtonAmount > 0)
         {
