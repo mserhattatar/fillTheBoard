@@ -5,8 +5,9 @@ using Random = UnityEngine.Random;
 public class ButtonManager : MonoBehaviour
 {
     public static ButtonManager instance; 
-    [HideInInspector]
+    
     public int numberToDisplay;
+    public int LevelButtonMatrix;
     
     private void Awake()
     {
@@ -15,8 +16,28 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        numberToDisplay = GameManager.instance.numberToDisplay;
+        FindLevelMatrix();
+        numberToDisplay = GameManager.instance.gameData.numberToDisplayDictionary[LevelButtonMatrix];
         BlockButton();
+    }
+   
+    private void FindLevelMatrix()
+    {
+        switch (ButtonListManager.instance.Button1.Count)
+        {
+            case 7:
+                LevelButtonMatrix = 7;
+                break;
+            case 8:
+                LevelButtonMatrix = 8;
+                break;
+            case 9:
+                LevelButtonMatrix = 9;
+                break;
+            case 10:
+                LevelButtonMatrix = 10;
+                break;
+        }
     }
 
     public void NumberUpdate()
@@ -166,14 +187,14 @@ public class ButtonManager : MonoBehaviour
         colorBlock.disabledColor = colorPink;
         button.GetComponent<Button>().colors = colorBlock;
     }
-    public static void SetEmptyButtonAmount()
+    public void SetEmptyButtonAmount()
     {
-        GameManager.instance.emptyButtonAmountAtLevelEnd = GameObject.FindGameObjectsWithTag("empty").Length;
+        GameManager.instance.gameData.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix] = GameObject.FindGameObjectsWithTag("empty").Length;
     }
     
-    private static void BlockButton()
+    private void BlockButton()
     {
-        int EmptyButtonAmount =GameManager.instance.emptyButtonAmountAtLevelEnd;
+        int EmptyButtonAmount = GameManager.instance.gameData.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix];
 
         while(EmptyButtonAmount > 0)
         {
@@ -193,7 +214,6 @@ public class ButtonManager : MonoBehaviour
                     _max = 100;
                     break;
             }
-
             int randomNo = Random.Range(0, _max);
 
             if (!ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().lockButton)

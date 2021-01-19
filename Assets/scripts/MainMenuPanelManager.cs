@@ -19,24 +19,24 @@ public class MainMenuPanelManager : MonoBehaviour
 
 
     private void Start()
-    {        
-        var bestScore = GameManager.instance.bestScoreNumber;
+    {
+        var data = GameManager.instance.gameData;
 
-        if (bestScore >= 1000)
+        if (data.bestScoreNumberDictionary[10] >= 1000)
         {
             Compleate10x10.SetActive(true);
         }
-        if (bestScore >= 810)
+        if (data.bestScoreNumberDictionary[9] >= 810)
         {
             Button10x10.GetComponent<Button>().interactable = true;
             Compleate9x9.SetActive(true);
         }
-        else if (bestScore >= 640)
+        if (data.bestScoreNumberDictionary[8] >= 640)
         {
             Button9x9.GetComponent<Button>().interactable = true;
             Compleate8x8.SetActive(true);
         }       
-        else if (bestScore >= 490)
+        if (data.bestScoreNumberDictionary[7] >= 490)
         {
             Button8x8.GetComponent<Button>().interactable = true;
             Compleate7x7.SetActive(true);
@@ -59,8 +59,6 @@ public class MainMenuPanelManager : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
-
-
     public void OpenInfoPanel()
     {
         InfoPanel.SetActive(true);

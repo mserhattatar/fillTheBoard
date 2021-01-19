@@ -1,72 +1,66 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    [HideInInspector]
-    public int numberToDisplay = 1;
-    [HideInInspector]
-    public int emptyButtonAmountAtLevelEnd = 0;    
-    [HideInInspector]
-    public int levelNumberToDisplay = 1;
-    [HideInInspector]
-    public int bestScoreNumber = 0;
-    
+
+
+    public GameData gameData;
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            gameData = new GameData(this);
             DontDestroyOnLoad(gameObject);
+            InitGameDataDict();
         }
         else
         {
             Destroy(gameObject);
             return;
-        }
-        
-        //Application.runInBackground = true;
-        
-        // Set 
-        //numberToDisplay = 1;
-        //levelNumberToDisplay = 1;
-        //bestScoreNumber = 0;
-        
+        }       
         GetvalueFromGameData();
     }
-    //private void Update()
-    //{
-    //    if (!Application.runInBackground)
-    //    {
-    //        Application.runInBackground = true;
-    //    }
-    //}
-    //private void Start()
-    //{
-    //    Debug.Log("numberToDisplay" + numberToDisplay );
-    //}
-
+   
+    private void InitGameDataDict()
+    {
+        if (gameData.numberToDisplayDictionary.Keys.Count > 0) return;
+        foreach (var gameIndex in new List<int> { 7, 8, 9, 10 })
+        {
+            gameData.numberToDisplayDictionary.Add(gameIndex, 1);
+            gameData.emptyButtonAmountAtLevelEndDictionary.Add(gameIndex, 0);
+            gameData.levelNumberToDisplayDictionary.Add(gameIndex, 1);
+            gameData.bestScoreNumberDictionary.Add(gameIndex, 0);
+        }
+    }
     public void ResetGame()
     {
-       numberToDisplay = 1;
-       levelNumberToDisplay = 1;
-       emptyButtonAmountAtLevelEnd = 0;
-       SaveGameNow();
+        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
+        gameData.numberToDisplayDictionary[_LevelMatrix] = 1;
+        gameData.levelNumberToDisplayDictionary[_LevelMatrix] = 1;
+        gameData.emptyButtonAmountAtLevelEndDictionary[_LevelMatrix] = 0;
+        SaveGameNow();
 
     }
     public void LevelComplete()
     {
-        numberToDisplay = ButtonManager.instance.numberToDisplay;
+        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
+        gameData.numberToDisplayDictionary[_LevelMatrix] = ButtonManager.instance.numberToDisplay;
         SetBestScore();
-        levelNumberToDisplay += 1;
-        ButtonManager.SetEmptyButtonAmount();
+        gameData.levelNumberToDisplayDictionary[_LevelMatrix] += 1;
+        ButtonManager.instance.SetEmptyButtonAmount();
         SaveGameNow();
     }
     private void SetBestScore()
     {
-        if (bestScoreNumber < numberToDisplay)
+        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
+
+        if (gameData.bestScoreNumberDictionary[_LevelMatrix] < gameData.numberToDisplayDictionary[_LevelMatrix])
         {
-            bestScoreNumber = numberToDisplay - 1;
+            gameData.bestScoreNumberDictionary[_LevelMatrix] = gameData.numberToDisplayDictionary[_LevelMatrix] - 1;
         }
     }
     public void SaveGameNow()
@@ -76,9 +70,14 @@ public class GameManager : MonoBehaviour
     public void GetvalueFromGameData()
     {
         GameData data = SaveSysteam.LoadGame();
-        numberToDisplay = data.numberToDisplay;
-        levelNumberToDisplay = data.levelNumberToDisplay;
-        emptyButtonAmountAtLevelEnd = data.emptyButtonCount;
-        bestScoreNumber = data.bestCoreNumber;
+
+        if (data == null ||
+            data.bestScoreNumberDictionary == null ||
+            !data.bestScoreNumberDictionary.ContainsKey(7))
+        {
+            FindObjectOfType<MainMenuPanelManager>().OpenInfoPanel();
+            return;
+        }
+        gameData = data;        
     }
 }

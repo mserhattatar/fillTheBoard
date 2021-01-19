@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    private int _gameObjectİndex;
     private bool _lockButtonWrite;
     private Animator _ButtonAnimator;
 
@@ -28,7 +27,6 @@ public class ButtonController : MonoBehaviour
     {
        NextButtons();
     }
-
    
     public void WriteNumber()
     {
@@ -44,8 +42,7 @@ public class ButtonController : MonoBehaviour
         ButtonListManager.instance.WriteList.Add(gameObject);
         ButtonManager.ActiveButtonColor();
         LevelManager.instance.SetNextLevel(this.targetButtonList.Count);       
-        startSearchPotantialNextButton = true;
-        
+        startSearchPotantialNextButton = true;        
     }
     
     public void LockButton()
