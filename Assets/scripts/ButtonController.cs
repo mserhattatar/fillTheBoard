@@ -41,7 +41,7 @@ public class ButtonController : MonoBehaviour
         gameObject.tag = "full";
         ButtonListManager.instance.WriteList.Add(gameObject);
         ButtonManager.ActiveButtonColor();
-        LevelManager.instance.SetNextLevel(this.targetButtonList.Count);       
+        AnimatorManager.instance.SetNextLevel(this.targetButtonList.Count);       
         startSearchPotantialNextButton = true;        
     }
     
