@@ -36,13 +36,13 @@ public class ButtonController : MonoBehaviour
         _lockButtonWrite = true;
         FindButtonİndex();
         ButtonManager.SetNumberButtonFontSize(gameObject);
-        emptytext.text = ButtonManager.instance.numberToDisplay.ToString();
-        ButtonManager.instance.NumberUpdate();
+        emptytext.text = ButtonManager.instance.numberToDisplay.ToString();       
         gameObject.tag = "full";
         ButtonListManager.instance.WriteList.Add(gameObject);
         ButtonManager.ActiveButtonColor();
         AnimatorManager.instance.SetNextLevel(this.targetButtonList.Count);       
-        startSearchPotantialNextButton = true;        
+        startSearchPotantialNextButton = true;
+        ButtonManager.instance.NumberUpdate();
     }
     
     public void LockButton()

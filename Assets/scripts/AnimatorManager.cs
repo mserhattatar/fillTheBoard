@@ -101,6 +101,7 @@ public class AnimatorManager : MonoBehaviour
     {
         gameFinishPanel.SetActive(true);
         _GameFinishAni.SetBool(aniName, true);
+        Instantiate(ConfettiBurst, new Vector3(0, -6, 0), Quaternion.Euler(0, 0, 0));
         Instantiate(ConfettiBurst, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
     }
 
