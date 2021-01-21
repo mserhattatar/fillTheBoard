@@ -4,8 +4,8 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSysteam 
 {
-
-    public static void SaveGame(GameManager gameManager)
+    // Saves the gameData object to the stream (for info like best score, level number ...)
+    public static void SaveGameData(GameManager gameManager)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/7x7Game.Data";
@@ -15,7 +15,8 @@ public static class SaveSysteam
         formatter.Serialize(stream, gameManager.gameData);
         stream.Close();
     }
-    public static GameData LoadGame()
+    // 
+    public static GameData getSavedGameData()
     {
         string path = Application.persistentDataPath + "/7x7Game.Data";
         if (File.Exists(path))

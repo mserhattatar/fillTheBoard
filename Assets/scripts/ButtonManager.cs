@@ -187,10 +187,7 @@ public class ButtonManager : MonoBehaviour
         colorBlock.disabledColor = colorPink;
         button.GetComponent<Button>().colors = colorBlock;
     }
-    public void SetEmptyButtonAmount()
-    {
-        GameManager.instance.gameData.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix] = GameObject.FindGameObjectsWithTag("empty").Length;
-    }
+   
     
     private void BlockButton()
     {

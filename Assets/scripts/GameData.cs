@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 [System.Serializable]
 public class GameData
@@ -12,10 +11,7 @@ public class GameData
    
     public Dictionary<int, int> bestScoreNumberDictionary = new Dictionary<int, int>();
 
+    public int selectedLang;
 
-
-    public GameData(GameManager gameManager)
-    {
-        
-    }
+    public GameData(){}
 }
