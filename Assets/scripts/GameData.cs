@@ -11,7 +11,9 @@ public class GameData
    
     public Dictionary<int, int> bestScoreNumberDictionary = new Dictionary<int, int>();
 
-    public int selectedLang;
+    public Dictionary<int, int> bestScoreLevelDictionary = new Dictionary<int, int>();
+
+    public int selectedLang = -1;
 
     public GameData(){}
 }

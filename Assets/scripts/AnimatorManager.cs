@@ -109,13 +109,13 @@ public class AnimatorManager : MonoBehaviour
     {
         IsFinishGamiAni();
 
-        if (ButtonListManager.instance.WriteList.Count >= 2)
+        if (ButtonListManager.instance.WriteList.Count >= _minWriteNumberForNextLevel)
         {
             var writeList = ButtonListManager.instance.WriteList;
             var firstButton = writeList[writeList.Count - 1].GetComponent<ButtonController>().targetButtonList.Count;
             var secondButton = writeList[writeList.Count - 2].GetComponent<ButtonController>().targetButtonList.Count;
 
-            if (firstButton <= 0 && secondButton <= 1)
+            if (firstButton <= 0 && secondButton == 1)
             {
                 if (_youWinGame)
                 {

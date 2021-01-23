@@ -6,8 +6,8 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
 
-    public Text bestScore;   
-    [HideInInspector]   
+    public Text bestScore;
+    public Text bestLevel;    
     public Text fakeLevelNumberUI;    
 
     private void Awake()
@@ -18,7 +18,8 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         fakeLevelNumberUI.text = GameManager.instance.gameData.levelNumberToDisplayDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();
-        bestScore.text = GameManager.instance.gameData.bestScoreNumberDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();                   
+        bestScore.text = GameManager.instance.gameData.bestScoreNumberDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();
+        bestLevel.text = GameManager.instance.gameData.bestScoreLevelDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();
     } 
 
     //Butoons Fonction
