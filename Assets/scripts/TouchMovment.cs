@@ -10,8 +10,8 @@ public class TouchMovment : MonoBehaviour
 
     void Start()
     {
-        dragDistanceHeight = Screen.height * 10 / 100; //dragDistance is 10% height of the screen
-        dragDistanceWidth = Screen.width * 10 / 100;  //dragDistance is 10% width of the screen
+        dragDistanceHeight = Screen.height * 5 / 100; //dragDistance is 10% height of the screen
+        dragDistanceWidth = Screen.width * 20 / 100;  //dragDistance is 10% width of the screen
     }
 
     private void ClickTargetButton(int targetNumber)

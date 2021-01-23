@@ -211,10 +211,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1242249315992039551, guid: 3e9580a54318cec4591c95b4533a504b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 77.94675
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242249315992039551, guid: 3e9580a54318cec4591c95b4533a504b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13.7
+      objectReference: {fileID: 0}
     - target: {fileID: 1242249316207225771, guid: 3e9580a54318cec4591c95b4533a504b,
         type: 3}
       propertyPath: m_Name
       value: 8x8Canvas (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295714108759008142, guid: 3e9580a54318cec4591c95b4533a504b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -99.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3295714108759008142, guid: 3e9580a54318cec4591c95b4533a504b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 6534358463692705491, guid: 3e9580a54318cec4591c95b4533a504b,
         type: 3}
@@ -326,6 +346,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 9097972831226693380, guid: 3e9580a54318cec4591c95b4533a504b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 99.686
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e9580a54318cec4591c95b4533a504b, type: 3}
 --- !u!1 &2096011915

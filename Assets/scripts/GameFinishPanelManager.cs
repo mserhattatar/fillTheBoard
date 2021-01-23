@@ -9,9 +9,10 @@ public class GameFinishPanelManager : MonoBehaviour
     private void Start()
     {
         var CText = LanguageManager.instance;
-        CText.TranslateText(FinishTheLevel, "Congrats!             You win this game!" , "Tebrikler!             Oyunu Kazandın");
-        CText.TranslateText(StartNewGameButtonText, "start new game", "Yeni Oyuna Başla");
-        CText.TranslateText(KeepGoingButtonText, "Keep going", "Devam Et");
+
+        FinishTheLevel.text = CText.getTranslatedTextOf("FinishTheLevel");
+        StartNewGameButtonText.text = CText.getTranslatedTextOf("StartNewGameButtonText");
+        KeepGoingButtonText.text = CText.getTranslatedTextOf("KeepGoingButtonText");
 
     }
 
