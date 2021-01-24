@@ -8,7 +8,6 @@ public class MainMenuPanelManager : MonoBehaviour
     public GameObject InfoPanelPage1;
     public GameObject InfoPanelPage2;
     public GameObject InfoPanelPage3;
-    public GameObject InfoPanelPage4;
 
     public GameObject MainMenu;
     public GameObject infoPanelButton;
@@ -23,7 +22,8 @@ public class MainMenuPanelManager : MonoBehaviour
     public GameObject Compleate10x10;
 
     public Text SerhatText;
-    private int Serhatint = 0;
+    private int Hile = 0;
+    private int FullReset = 0;
 
 
 
@@ -82,7 +82,6 @@ public class MainMenuPanelManager : MonoBehaviour
         InfoPanel.SetActive(false);
         InfoPanelPage1.SetActive(false);
     }
-
     public void InfoPanelNextPage2()
     {
         InfoPanelPage2.SetActive(true);
@@ -90,11 +89,7 @@ public class MainMenuPanelManager : MonoBehaviour
     public void InfoPanelNextPage3()
     {
         InfoPanelPage3.SetActive(true);
-    }
-    public void InfoPanelNextPage4()
-    {
-        InfoPanelPage4.SetActive(true);
-    }
+    }   
     public void InfoPanelBackPage1()
     {
         InfoPanelPage2.SetActive(false);
@@ -103,30 +98,34 @@ public class MainMenuPanelManager : MonoBehaviour
     {
         InfoPanelPage3.SetActive(false);
     }
-    public void InfoPanelBackPage3()
-    {
-        InfoPanelPage4.SetActive(false);
-    }
+  
 
 
     public void SerhatButton()
     {
-        if (LanguageManager.instance.selectedLang != 1) return;
-        Serhatint += 1;
+        if (LanguageManager.instance.selectedLang == 1)
+        {
+            Hile += 1;
+            if (Hile > 5)
+            {
+                SerhatText.text = "MST";
+                GameManager.instance.SerhatHile(10, 990);
+                GameManager.instance.SerhatHile(9, 800);
+                GameManager.instance.SerhatHile(8, 630);
+                GameManager.instance.SerhatHile(7, 480);
+            }
 
-       
-        if (Serhatint > 10)
-        {
-            SerhatText.text = "MST";
-            GameManager.instance.SerhatHile(10, 990);
-            GameManager.instance.SerhatHile(9, 800);
-            GameManager.instance.SerhatHile(8, 630);
-            GameManager.instance.SerhatHile(7, 480);
         }
-        else if (Serhatint > 5)
+        else if (LanguageManager.instance.selectedLang == 2)
         {
-            SerhatText.text = "reset";
-            GameManager.instance.ResetGameDataDict();
+            FullReset += 1;
+            if (FullReset > 5)
+            {
+                SerhatText.text = "reset";
+                GameManager.instance.ResetGameDataDict();
+            }
         }
+        else
+            return;       
     }
 }

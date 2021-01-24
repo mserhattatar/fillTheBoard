@@ -8,7 +8,7 @@ public static class SaveSysteam
     public static void SaveGameData(GameManager gameManager)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/7x73game.Data";
+        string path = Application.persistentDataPath + "/7x7tatar.Data";
         FileStream stream = new FileStream(path, FileMode.Create);
         //GameData data = new GameData(gameManager);
 
@@ -19,7 +19,7 @@ public static class SaveSysteam
     public static GameData getSavedGameData()
     {
         
-        string path = Application.persistentDataPath + "/7x73game.Data";
+        string path = Application.persistentDataPath + "/7x7tatar.Data";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
