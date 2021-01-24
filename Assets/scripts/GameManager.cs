@@ -42,6 +42,12 @@ public class GameManager : MonoBehaviour
         gameData.selectedLang = LanguageManager.instance.selectedLang;
         SaveGameNow();
     }   
+
+    public void SaveBestScore()
+    {
+        SetBestScore();
+        SaveGameNow();
+    }
     public void SaveSelectedLanguage()
     {
         gameData.selectedLang = LanguageManager.instance.selectedLang;
@@ -66,37 +72,43 @@ public class GameManager : MonoBehaviour
     {
         GameData data = SaveSysteam.getSavedGameData();
 
-        gameData.numberToDisplayDictionary = InitGameDataDict(data, data.numberToDisplayDictionary, gameData.numberToDisplayDictionary, 1);
-        gameData.emptyButtonAmountAtLevelEndDictionary = InitGameDataDict(data, data.emptyButtonAmountAtLevelEndDictionary, gameData.emptyButtonAmountAtLevelEndDictionary, 0);
-        gameData.levelNumberToDisplayDictionary = InitGameDataDict(data, data.levelNumberToDisplayDictionary, gameData.levelNumberToDisplayDictionary, 1);
-        gameData.bestScoreNumberDictionary = InitGameDataDict(data, data.bestScoreNumberDictionary, gameData.bestScoreNumberDictionary, 0);
-        gameData.bestScoreLevelDictionary = InitGameDataDict(data, data.bestScoreLevelDictionary, gameData.bestScoreLevelDictionary, 0);
-        
-        
-        if (data == null || (data !=null && data.selectedLang < 0)) //TODO 0 yerine null
+        if (data == null || data.numberToDisplayDictionary == null || !data.numberToDisplayDictionary.ContainsKey(7))
         {
+            InitGameDataDict(gameData.numberToDisplayDictionary, 1);
+            InitGameDataDict(gameData.emptyButtonAmountAtLevelEndDictionary, 0);
+            InitGameDataDict(gameData.levelNumberToDisplayDictionary, 1);
+            InitGameDataDict(gameData.bestScoreNumberDictionary, 0);
+            InitGameDataDict(gameData.bestScoreLevelDictionary, 0);
             gameData.selectedLang = (int)LangNamespace.Language.English;
+
             FindObjectOfType<MainMenuPanelManager>().InfoPanelButtonAni();
-            return;
         }
         else
-            gameData.selectedLang = data.selectedLang;
+        {
+            gameData = data;
+        }
         
         LanguageManager.instance.initLayoutManager();
     }
     
-    private Dictionary<int, int> InitGameDataDict(GameData data, Dictionary<int, int> dataDict, Dictionary<int, int> gameDataDict, int firstValue)
+    private void InitGameDataDict(Dictionary<int, int> gameDataDict, int firstValue)
     { 
-        if (data == null || dataDict == null || !dataDict.ContainsKey(7))
+        foreach (var gameIndex in new List<int> { 7, 8, 9, 10 })
         {
-            foreach (var gameIndex in new List<int> { 7, 8, 9, 10 })
-            {
-                gameDataDict.Add(gameIndex, firstValue);
-            }
-            return gameDataDict; 
+            gameDataDict.Add(gameIndex, firstValue);
+        }       
+    }
+
+    public void ResetGameDataDict()
+    {
+        foreach (var gameIndex in new List<int> { 7, 8, 9, 10 })
+        {
+            gameData.numberToDisplayDictionary[gameIndex] = 1;
+            gameData.emptyButtonAmountAtLevelEndDictionary[gameIndex] = 0;
+            gameData.levelNumberToDisplayDictionary[gameIndex] = 1;
+            gameData.bestScoreNumberDictionary[gameIndex] = 0;
+            gameData.bestScoreLevelDictionary[gameIndex] = 0;
         }
-        gameDataDict = dataDict;
-        return gameDataDict;
     }
 
     public void SerhatHile(int matrix, int number)

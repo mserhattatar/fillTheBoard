@@ -8,9 +8,7 @@ public class MainMenuText : MonoBehaviour
 
     public Text CreatingBy;
     public Text IBackButton;
-    public Text IMainMenuText;
-    public Text IRetryGameText;
-    public Text IRetryLevelText;
+    public Text IStepBack;
     public Text IStepBackText;
     public Text IEvery2nd;
     public Text IEvery3rd;
@@ -18,7 +16,12 @@ public class MainMenuText : MonoBehaviour
     public Text I5BlockedBoxesText;
     public Text IDontForgetText;
     public Text IDontForgetText2;
-    public TextMeshProUGUI IHowToPlay;
+    public Text IHowToPlay;
+    public Text IHowToPlayExplanation;
+    public Text INextLevelText;
+    public Text IGameTarget;
+    public Text IGameTargetUnderline;
+    
 
 
     private void Update()
@@ -39,13 +42,9 @@ public class MainMenuText : MonoBehaviour
         var CText = LanguageManager.instance;
 
         CreatingBy.text = CText.getTranslatedTextOf("CreatingBy");
-        IBackButton.text = CText.getTranslatedTextOf("IBackButton");
-        IMainMenuText.text = CText.getTranslatedTextOf("IMainMenuText");
-        IRetryGameText.text = CText.getTranslatedTextOf("IRetryGameText");
-        IRetryLevelText.text = CText.getTranslatedTextOf("IRetryLevelText");
+        IBackButton.text = CText.getTranslatedTextOf("IBackButton");       
         IStepBackText.text = CText.getTranslatedTextOf("IStepBackText");
-
-
+        IStepBack.text = CText.getTranslatedTextOf("StepBack");        
         IEvery3rd.text = CText.getTranslatedTextOf("IEvery3rd");
         IEvery2nd.text = CText.getTranslatedTextOf("IEvery2nd");
         I5EmptyBoxesText.text = CText.getTranslatedTextOf("I5EmptyBoxesText");
@@ -53,6 +52,10 @@ public class MainMenuText : MonoBehaviour
         IDontForgetText.text = CText.getTranslatedTextOf("IDontForgetText");
         IDontForgetText2.text = CText.getTranslatedTextOf("IDontForgetText2");
         IHowToPlay.text = CText.getTranslatedTextOf("IHowToPlay");
+        IHowToPlayExplanation.text = CText.getTranslatedTextOf("IHowToPlayExplanation");
+        INextLevelText.text = CText.getTranslatedTextOf("NextLevel");
+        IGameTarget.text = CText.getTranslatedTextOf("IGameTarget");
+        IGameTargetUnderline.text = CText.getTranslatedTextOf("IGameTargetUnderline");
 
     }
 }

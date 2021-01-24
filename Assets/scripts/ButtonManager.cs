@@ -16,29 +16,10 @@ public class ButtonManager : MonoBehaviour
 
     private void Start()
     {
-        FindLevelMatrix();
+        LevelButtonMatrix = ButtonListManager.instance.Button1.Count;
         numberToDisplay = GameManager.instance.gameData.numberToDisplayDictionary[LevelButtonMatrix];
         BlockButton();
-    }
-   
-    private void FindLevelMatrix()
-    {
-        switch (ButtonListManager.instance.Button1.Count)
-        {
-            case 7:
-                LevelButtonMatrix = 7;
-                break;
-            case 8:
-                LevelButtonMatrix = 8;
-                break;
-            case 9:
-                LevelButtonMatrix = 9;
-                break;
-            case 10:
-                LevelButtonMatrix = 10;
-                break;
-        }
-    }
+    }   
 
     public void NumberUpdate()
     {

@@ -18,46 +18,55 @@ public class LanguageManager : MonoBehaviour
     public Dictionary<string, string> enTextDict = new Dictionary<string, string> {
         { "CreatingBy", "THİS GAME IS CREATED BY   TATAR GAME" }, 
         { "IBackButton", "Back" },
-        { "IMainMenuText", "Main Menu" },
-        { "IRetryGameText", "Try Again From Sarting Level 1" },
-        { "IRetryLevelText", "Try Again The Level" },
-        { "IStepBackText", "You Have 1 Step Back Right For Every Level" },
         { "IEvery3rd", "Every 3rd Box" },
         { "IEvery2nd", "Every 2nd Box" },
         { "I5EmptyBoxesText", "5 Empty Boxes" },
         { "I5BlockedBoxesText", "5 Blocked Boxes" },
-        { "IDontForgetText", "Don't Forget! You Can leave only 20 unfilled* boxes  for every level." },
-        { "IDontForgetText2", "*Empty and blocked boxes together." },
-        { "IHowToPlay", "HOW TO PLAY" },
-        { "FinishTheLevel", "Congrats!             You win this game!" },
-        { "StartNewGameButtonText", "start new game" },
-        { "KeepGoingButtonText", "Keep going" }, 
+        
+        { "IHowToPlay", "HOW TO PLAY?" },
+        { "FinishTheLevel", "Congrats!             You win this game!" },        
         { "RetryLevel", "RETRY LEVEL" },
         { "RetryGame", "RETRY GAME" },
         { "StepBack", "STEP BACK" },
         { "BestScore", "Best Score" },
         { "BestLevel", "Score Level" },
         { "NextLevel", "NEXT LEVEL" },
-        { "YouWin", "FINISH THE LEVEL AND WIN THE GAME!" },
-    };
+        { "YouWin", "FINISH THE LEVEL AND WIN THE GAME!" },        
+        { "IGameTarget",          "Game         Target Score" },
+        { "IGameTargetUnderline", "_____         ____________" },
+         { "IDontForgetText2", "*Empty and blocked boxes together." },
 
+        { "IHowToPlayExplanation", "Fill the boxes, reach the target and open the next game!" },
+        { "IHowToPlayExplanation2", "Each game has a different target score to teach." },
+        { "FollowPattern", "Follow the pattern to fill. You can go to every 3rd box on the straight road and every 2nd box on the cross road." },
+        { "Leaveasless", "Leave as less unfilled box as possible because they will be carried over to the next step as blocked boxes." },
+        { "RetryGameInfo", "Retry game from starting first level. You will lose the your data except best score for the seelcted game." },
+        { "RetryLevelInfo", "Retry level as many time as you wish. Use it especially if you want a better level end or want to change the blocked box positioning." },
+        { "IStepBackText", "Go one step back and try your move again. You Have 1 Step Back Right For Every Level and it will be lost if you do not use it." },
+        { "IDontForgetText", "Don't Forget! You Can leave only 20 unfilled* boxes  for every level.           Otherwise you must retry the level until you success :)" },
+       
+
+
+
+
+
+
+
+
+
+
+
+
+    };
     public Dictionary<string, string> trTextDict = new Dictionary<string, string> {
-        { "CreatingBy", "BU OYUN TATAR GAME TARAFINDAN OLUŞTURULMUSTUR" },
-        { "IBackButton", "Geri" },
-        { "IMainMenuText", "Ana Menu" },
-        { "IRetryGameText", "Oyunu 1.Level'dan baslayarak tekrar dene" },
-        { "IRetryLevelText", "Bu Levelı tekrarla" },
-        { "IStepBackText", "Her levelda bir yazılmıs kutuyu geri alma hakkın var" },
+        { "CreatingBy", "BU OYUN TATAR GAME TARAFINDAN OLUSTURULMUSTUR" },
+        { "IBackButton", "Geri" },       
         { "IEvery3rd", "Her 3. kutu" },
         { "IEvery2nd", "Her 2. kutu" },
         { "I5EmptyBoxesText", "5 Bos Kutu" },
-        { "I5BlockedBoxesText", "5 Kilitlenmis kutu" },
-        { "IDontForgetText", "Unutma! Her levelda sadece 20 kutu boş bırakabilirsin." },
-        { "IDontForgetText2", "*Bos ve kilitlenmiş kutular dahil." },
-        { "IHowToPlay", "NASIL OYNANIR" },
+        { "I5BlockedBoxesText", "5 Kilitlenmis kutu" },       
+        { "IHowToPlay", "NASIL OYNANIR?" },
         { "FinishTheLevel", "Tebrikler!             Oyunu Kazandın" },
-        { "StartNewGameButtonText", "Yeni Oyuna Başla" },
-        { "KeepGoingButtonText", "Devam Et" },
         { "RetryLevel", "LEVELI YENILE" },
         { "RetryGame", "OYUNU YENILE" },
         { "StepBack", "GERİ AL" },
@@ -65,24 +74,21 @@ public class LanguageManager : MonoBehaviour
         { "BestLevel", "Skor Leveli" },
         { "NextLevel", "SONRAKI LEVEL" },
         { "YouWin", "LEVELI BITIR VE OYUNU KAZAN!" },
+        
+        { "IGameTarget",          "Oyun          Hedef Skor" },
+        { "IGameTargetUnderline", "_____         ___________" },
+         { "MainMenu", "Ana Menu" },
+         { "IHowToPlayExplanation", "Kutuları doldur, hedefe ulas ve sonraki oyuna geç" },
     };
     public Dictionary<string, string> deTextDict = new Dictionary<string, string> {
         { "CreatingBy", "DIESES SPIEL WURDE VON TATAR GAME ERSTELLT" },
-        { "IBackButton", "Zurück" },
-        { "IMainMenuText", "Hauptmenu" },
-        { "IRetryGameText", "Versuchen Sie es noch einmal von Level 1 aus" },
-        { "IRetryLevelText", "Versuchen Sie das Level erneut" },
-        { "IStepBackText", "Sie haben 1 Schritt zurück rechts für jedes Level"},
+        { "IBackButton", "Zurück" },       
         { "IEvery3rd", "Jede 3. Box" },
         { "IEvery2nd", "Jede 2. Box" },
         { "I5EmptyBoxesText", "5 leere Boxen" },
         { "I5BlockedBoxesText", "5 blockierte Boxen" },
-        { "IDontForgetText", "Vergessen Sie nicht! Sie können nur 20 ungefüllte* Boxen je Level stehen lassen." },
-        { "IDontForgetText2", "*Leere und blockierte Boxen zusammen." },
         { "IHowToPlay", "WIE ZU SPIELEN?" },
         { "FinishTheLevel", "Gratulation!             Sie haben das Spiel gewonnen!" },
-        { "StartNewGameButtonText", "Neues Spiel starten" },
-        { "KeepGoingButtonText", "Weitermachen" },
         { "RetryLevel", "RETRY-LEVEL" },
         { "RetryGame", "RETRY-SPIEL" },
         { "StepBack", "RÜCKSCHRITT" },
@@ -90,6 +96,12 @@ public class LanguageManager : MonoBehaviour
         { "BestLevel", "Note Level" },
         { "NextLevel", "NÄCHSTES LEVEL" },
         { "YouWin", "BEENDEN SIE DAS LEVEL UND GEWINNEN SIE DAS SPIEL!" },
+       
+        { "IGameTarget",          "SPIEL        Ziel-Note" },
+        { "IGameTargetUnderline", "_____        _________" },
+         { "MainMenu", "Hauptmenu" },
+
+          { "IHowToPlayExplanation", "Füllt die Kästchen, erreicht das Ziel und geht zum nächsten Spiel über!" },
     };
 
 

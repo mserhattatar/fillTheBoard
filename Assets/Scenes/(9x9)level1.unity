@@ -277,31 +277,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 484368980237210213, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -99.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 484368980237210213, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 111
-      objectReference: {fileID: 0}
-    - target: {fileID: 4195440240053076372, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 77.94675
-      objectReference: {fileID: 0}
-    - target: {fileID: 4195440240053076372, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 13.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4195440240053076372, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 111
-      objectReference: {fileID: 0}
     - target: {fileID: 4195440240268401216, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
         type: 3}
       propertyPath: m_Name
@@ -312,11 +287,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 6144624676485150447, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 99.686
-      objectReference: {fileID: 0}
     - target: {fileID: 8190602855022575416, guid: 0d54bf9d8a420ea49a252204b2c65f4c,
         type: 3}
       propertyPath: m_Pivot.x
