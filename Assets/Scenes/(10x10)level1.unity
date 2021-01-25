@@ -277,41 +277,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2088407556989520506, guid: b3c682dfa2b857d4589c48e89df8a05f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -99.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2088407556989520506, guid: b3c682dfa2b857d4589c48e89df8a05f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 111
-      objectReference: {fileID: 0}
     - target: {fileID: 2340290937592742495, guid: b3c682dfa2b857d4589c48e89df8a05f,
         type: 3}
       propertyPath: m_Name
       value: 10x10Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2340290937678567819, guid: b3c682dfa2b857d4589c48e89df8a05f,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 77.94675
-      objectReference: {fileID: 0}
-    - target: {fileID: 2340290937678567819, guid: b3c682dfa2b857d4589c48e89df8a05f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 13.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5694035406587490032, guid: b3c682dfa2b857d4589c48e89df8a05f,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 99.686
-      objectReference: {fileID: 0}
-    - target: {fileID: 6534597531196626884, guid: b3c682dfa2b857d4589c48e89df8a05f,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 519420031}
     - target: {fileID: 7775901780284565287, guid: b3c682dfa2b857d4589c48e89df8a05f,
         type: 3}
       propertyPath: m_Pivot.x

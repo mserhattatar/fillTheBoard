@@ -5,6 +5,10 @@ using UnityEngine.UI;
 public class MainMenuPanelManager : MonoBehaviour
 {
     public GameObject InfoPanel;
+    public GameObject InfoPanelPage1;
+    public GameObject InfoPanelPage2;
+    public GameObject InfoPanelPage3;
+
     public GameObject MainMenu;
     public GameObject infoPanelButton;
 
@@ -18,7 +22,8 @@ public class MainMenuPanelManager : MonoBehaviour
     public GameObject Compleate10x10;
 
     public Text SerhatText;
-    private int Serhatint = 0;
+    private int Hile = 0;
+    private int FullReset = 0;
 
 
 
@@ -70,36 +75,57 @@ public class MainMenuPanelManager : MonoBehaviour
     public void OpenInfoPanel()
     {
         InfoPanel.SetActive(true);
+        InfoPanelPage1.SetActive(true);
     }
     public void CloseInfoPanel()
     {
         InfoPanel.SetActive(false);
+        InfoPanelPage1.SetActive(false);
     }
+    public void InfoPanelNextPage2()
+    {
+        InfoPanelPage2.SetActive(true);
+    }
+    public void InfoPanelNextPage3()
+    {
+        InfoPanelPage3.SetActive(true);
+    }   
+    public void InfoPanelBackPage1()
+    {
+        InfoPanelPage2.SetActive(false);
+    }
+    public void InfoPanelBackPage2()
+    {
+        InfoPanelPage3.SetActive(false);
+    }
+  
 
 
     public void SerhatButton()
     {
-        if (LanguageManager.instance.selectedLang != 1) return;
-        Serhatint += 1;
-        if(Serhatint > 20)
+        if (LanguageManager.instance.selectedLang == 1)
         {
-            SerhatText.text = "4";
-            GameManager.instance.SerhatHile(10, 990);
+            Hile += 1;
+            if (Hile > 5)
+            {
+                SerhatText.text = "MST";
+                GameManager.instance.SerhatHile(10, 990);
+                GameManager.instance.SerhatHile(9, 800);
+                GameManager.instance.SerhatHile(8, 630);
+                GameManager.instance.SerhatHile(7, 480);
+            }
+
         }
-        else if (Serhatint > 15)
+        else if (LanguageManager.instance.selectedLang == 2)
         {
-            SerhatText.text = "3";
-            GameManager.instance.SerhatHile(9, 800);
+            FullReset += 1;
+            if (FullReset > 5)
+            {
+                SerhatText.text = "reset";
+                GameManager.instance.ResetGameDataDict();
+            }
         }
-        else if (Serhatint > 10)
-        {
-            SerhatText.text = "2";
-            GameManager.instance.SerhatHile(8, 630);
-        }
-        else if (Serhatint > 5)
-        {
-            SerhatText.text = "1";
-            GameManager.instance.SerhatHile(7, 480);
-        }
+        else
+            return;       
     }
 }

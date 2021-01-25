@@ -17,9 +17,10 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        fakeLevelNumberUI.text = GameManager.instance.gameData.levelNumberToDisplayDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();
-        bestScore.text = GameManager.instance.gameData.bestScoreNumberDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();
-        bestLevel.text = GameManager.instance.gameData.bestScoreLevelDictionary[ButtonManager.instance.LevelButtonMatrix].ToString();
+        var LevelMatrix = ButtonListManager.instance.Button1.Count;        
+        fakeLevelNumberUI.text = GameManager.instance.gameData.levelNumberToDisplayDictionary[LevelMatrix].ToString();
+        bestScore.text = GameManager.instance.gameData.bestScoreNumberDictionary[LevelMatrix].ToString();
+        bestLevel.text = GameManager.instance.gameData.bestScoreLevelDictionary[LevelMatrix].ToString();
     } 
 
     //Butoons Fonction
@@ -28,7 +29,7 @@ public class LevelManager : MonoBehaviour
         GameManager.instance.LevelComplete();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void NextGame()
+    public void MainMenu()
     {
         GameManager.instance.LevelComplete();
         SceneManager.LoadScene(0);
@@ -36,6 +37,12 @@ public class LevelManager : MonoBehaviour
     
     public void RetryScene()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void RetryLevelSaveBestScore()
+    {
+        GameManager.instance.SaveBestScore();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     public void ResetGame()
@@ -46,5 +53,10 @@ public class LevelManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void OpenNextGame(int whichgame)
+    {
+        GameManager.instance.LevelComplete();
+        SceneManager.LoadScene(whichgame);
     }
 }

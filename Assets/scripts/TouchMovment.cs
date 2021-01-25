@@ -10,8 +10,8 @@ public class TouchMovment : MonoBehaviour
 
     void Start()
     {
-        dragDistanceHeight = Screen.height * 5 / 100; //dragDistance is 10% height of the screen
-        dragDistanceWidth = Screen.width * 20 / 100;  //dragDistance is 10% width of the screen
+        dragDistanceHeight = Screen.height * 4 / 100; //dragDistance is 10% height of the screen
+        dragDistanceWidth = Screen.width * 4 / 100;  //dragDistance is 10% width of the screen
     }
 
     private void ClickTargetButton(int targetNumber)
@@ -67,13 +67,11 @@ public class TouchMovment : MonoBehaviour
                     {
                         if (lp.x > fp.x)  //If the movement was to the right)
                         {   //Right swipe //Up swipe
-                            Debug.Log("Went Right Up swipe");
                             ClickTargetButton((int)Direction.RightUp);
 
                         }
                         else
                         {   //Left swipe //Up swipe
-                            Debug.Log("Went Left //Up swipe");
                             ClickTargetButton((int)Direction.LeftUp);
                         }
                     }
@@ -81,13 +79,11 @@ public class TouchMovment : MonoBehaviour
                     {
                         if (lp.x > fp.x)  //If the movement was to the right)
                         {   //Right swipe //down swipe
-                            Debug.Log("Went Right down swipe");
                             ClickTargetButton((int)Direction.RightDown);
 
                         }
                         else
                         {   //Left swipe //down swipe
-                            Debug.Log("Went Left //down swipe");
                             ClickTargetButton((int)Direction.LeftDown);
                         }
                     }
@@ -97,14 +93,11 @@ public class TouchMovment : MonoBehaviour
                 {
                     if ((lp.x > fp.x))  //If the movement was to the right)
                     {   //Right swipe
-                        Debug.Log("Went Right");
                         ClickTargetButton((int)Direction.Right);
 
                     }
                     else
                     {   //Left swipe
-
-                        Debug.Log("Went Left");
                         ClickTargetButton((int)Direction.Left);
                     }
                 }
@@ -114,12 +107,10 @@ public class TouchMovment : MonoBehaviour
 
                     if (lp.y > fp.y)  //If the movement was up
                     {   //Up swipe
-                        Debug.Log("Up Swipe");
                         ClickTargetButton((int)Direction.Up);
                     }
                     else
                     {   //Down swipe
-                        Debug.Log("Down Swipe");
                         ClickTargetButton((int)Direction.Down);
                     }
                 }

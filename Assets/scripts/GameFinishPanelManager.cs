@@ -4,28 +4,35 @@ using UnityEngine.UI;
 public class GameFinishPanelManager : MonoBehaviour
 {
     public Text FinishTheLevel;
-    public Text StartNewGameButtonText;
-    public Text KeepGoingButtonText;
+    public Text MainMenuButtonText;
+    public Text RetryLevelButtonText;
     private void Start()
     {
         var CText = LanguageManager.instance;
 
         FinishTheLevel.text = CText.getTranslatedTextOf("FinishTheLevel");
-        StartNewGameButtonText.text = CText.getTranslatedTextOf("StartNewGameButtonText");
-        KeepGoingButtonText.text = CText.getTranslatedTextOf("KeepGoingButtonText");
-
+        MainMenuButtonText.text = CText.getTranslatedTextOf("MainMenu");
+        RetryLevelButtonText.text = CText.getTranslatedTextOf("RetryLevel");
     }
 
     public void CloseGameFinishPanel()
     {
         this.gameObject.SetActive(false);
     }
-    public void KeepGoing()
+    public void RetryLevelSaveBestScore()
     {
-        LevelManager.instance.NextScene();
+        LevelManager.instance.RetryLevelSaveBestScore();
     }
-    public void NextGame()
+    public void MainMenu()
     {
-        LevelManager.instance.NextGame();
+        LevelManager.instance.MainMenu();
+    }
+
+
+    //NextGameButton
+    public void OpenNextGame(int whichgame)
+    {
+        LevelManager.instance.OpenNextGame(whichgame);
+
     }
 }
