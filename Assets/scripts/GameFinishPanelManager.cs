@@ -15,21 +15,20 @@ public class GameFinishPanelManager : MonoBehaviour
         RetryLevelButtonText.text = CText.getTranslatedTextOf("RetryLevel");
     }
 
+    //button on click func
     public void CloseGameFinishPanel()
     {
         this.gameObject.SetActive(false);
     }
     public void RetryLevelSaveBestScore()
     {
-        LevelManager.instance.RetryLevelSaveBestScore();
+        GameManager.instance.SaveBestScore();
+        LevelManager.instance.RetryScene();
     }
     public void MainMenu()
     {
         LevelManager.instance.MainMenu();
     }
-
-
-    //NextGameButton
     public void OpenNextGame(int whichgame)
     {
         LevelManager.instance.OpenNextGame(whichgame);

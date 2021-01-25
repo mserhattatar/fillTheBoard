@@ -16,12 +16,13 @@ public class ButtonListManager : MonoBehaviour
     public List<GameObject> Button8 = new List<GameObject>();
     public List<GameObject> Button9 = new List<GameObject>();
     public List<GameObject> Button10 = new List<GameObject>();
-
-
     public List<GameObject> EmtyNumberButton = new List<GameObject>();
-    public List<List<GameObject>> GamePlate = new List<List<GameObject>>();
+
     [HideInInspector]
     public List<GameObject> WriteList = new List<GameObject>();
+
+    public List<List<GameObject>> GamePlate = new List<List<GameObject>>();
+   
     
     private void Awake()
     {

@@ -35,14 +35,14 @@ public class TouchMovment : MonoBehaviour
     }
     void Update()
     {
-        if (_touchControlOn)
-        {
-            DetectTouchClickTarget();
-        }
-        if (ButtonListManager.instance.WriteList.Count > 0 && !_touchControlOn)
-        {
-            _touchControlOn = true;
-        }        
+        //if (_touchControlOn)
+        //{
+        //    DetectTouchClickTarget();
+        //}
+        //if (ButtonListManager.instance.WriteList.Count > 0 && !_touchControlOn)
+        //{
+        //    _touchControlOn = true;
+        //}        
     }
 
     private void DetectTouchClickTarget()

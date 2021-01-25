@@ -4,23 +4,33 @@ using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
-    private bool _lockButtonWrite;
-    private Animator _ButtonAnimator;
+    enum Direction
+    {
+        Left,
+        Right,
+        Up,
+        Down,
+        LeftUp,
+        LeftDown,
+        RightUp,
+        RightDown
+    }
 
+    private bool _lockButtonWrite;
+
+    public Text emptytext;
     [HideInInspector]
     public bool lockButton;
     [HideInInspector]
     public bool startSearchPotantialNextButton;
     [HideInInspector]
     public bool setBackButtonNumber;
-    public Text emptytext;
 
     public Dictionary<int, GameObject> targetButtonList = new Dictionary<int, GameObject>();
 
     private void Start()
     {
         ButtonManager.ButtonStart(gameObject);
-        _ButtonAnimator = this.GetComponent<Animator>();
     }
     
     private void Update()
@@ -40,20 +50,10 @@ public class ButtonController : MonoBehaviour
         gameObject.tag = "full";
         ButtonListManager.instance.WriteList.Add(gameObject);
         ButtonManager.ActiveButtonColor();
-        AnimatorManager.instance.SetNextLevel(this.targetButtonList.Count);       
+        AnimatorAndLevelPanelManager.instance.CheckLevelCompleateOrNot(this.targetButtonList.Count);       
         startSearchPotantialNextButton = true;
         ButtonManager.instance.NumberUpdate();
-    }
-    
-    public void LockButton()
-    {        
-        emptytext.text = " ";
-        gameObject.tag = "full";
-        ButtonManager.ButtonImage(gameObject);
-        lockButton = true;
-        _lockButtonWrite = true;
-    }
-    
+    }    
     public void UndoWrite()
     {
         lockButton = false;
@@ -64,11 +64,15 @@ public class ButtonController : MonoBehaviour
         ButtonListManager.instance.WriteList.RemoveAt(ButtonListManager.instance.WriteList.Count - 1);
         ButtonManager.ActiveButtonColor();
     }
-    public void SetActiveButtonCollor(bool active)
+    public void LockButton()
     {
-        _ButtonAnimator.SetBool("isActiveButtonCollor", active);
+        emptytext.text = " ";
+        gameObject.tag = "full";
+        ButtonManager.ButtonImage(gameObject);
+        lockButton = true;
+        _lockButtonWrite = true;
     }
-   
+
     private void FindButtonİndex()
     {
         for (var i=0; i< ButtonListManager.instance.GamePlate.Count; i++)
@@ -82,13 +86,7 @@ public class ButtonController : MonoBehaviour
                 }
             }
         }
-    }
-    /*
-               SUTUN(X)
-      SATIR(Y) 1234567
-               123X567      
-    
-     */
+    }   
     private void FindPotantialTargetButton(int satir, int sutun)
     {
         int _max =7;
@@ -107,54 +105,32 @@ public class ButtonController : MonoBehaviour
                 _max = 10;
                 break;            
         }
-
-
         targetButtonList.Clear();
         // sol -- satir, sutun-3
         if (sutun - 3 >= 0)
             AddToTargetButtonList((int)Direction.Left, satir, sutun - 3);
-
         // sag -- satir, sutun +3
         if (sutun + 3 < _max)
             AddToTargetButtonList((int)Direction.Right, satir, sutun + 3);
-
         // yukari -- satir - 3, sutun 
         if (satir - 3 >= 0)
             AddToTargetButtonList((int)Direction.Up, satir - 3, sutun);
-
         // aşağı -- satir + 3, sutun 
         if (satir + 3 < _max)
             AddToTargetButtonList((int)Direction.Down, satir + 3, sutun);
-
-
-
         // sol-yukari 
         if (satir - 2 >= 0 && sutun - 2 >= 0 )
             AddToTargetButtonList((int)Direction.LeftUp, satir - 2, sutun - 2);
-
         // sag yukari
         if (satir - 2 >= 0 && sutun + 2 < _max)
             AddToTargetButtonList((int)Direction.RightUp, satir - 2, sutun + 2);
-
         // sol-aşağı 
         if (satir + 2 < _max && sutun - 2 >= 0)
             AddToTargetButtonList((int)Direction.LeftDown, satir + 2, sutun - 2);
-
         // sag aşağı
         if (satir + 2 < _max && sutun + 2 < _max)
             AddToTargetButtonList((int)Direction.RightDown, satir + 2, sutun + 2);
-    }
-    enum Direction
-    {
-        Left,
-        Right,
-        Up,
-        Down,
-        LeftUp,
-        LeftDown,
-        RightUp,
-        RightDown
-    }
+    } 
 
     private void AddToTargetButtonList(int direction, int satir, int sutun)
     {        
@@ -182,10 +158,5 @@ public class ButtonController : MonoBehaviour
             ButtonManager.ButtonColorBlue(t.Value);
         }
         startSearchPotantialNextButton = false;
-    }
-
-    private GameObject getButtonOn(int direction)
-    {
-        return targetButtonList[direction];
     }
 }
