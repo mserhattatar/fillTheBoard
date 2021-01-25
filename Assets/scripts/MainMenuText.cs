@@ -32,6 +32,7 @@ public class MainMenuText : MonoBehaviour
     public Text BackButtonText2;
     public Text NextButtonText;
     public Text NextButtonText1;
+    public Text CloseButtonText;
 
 
 
@@ -78,5 +79,6 @@ public class MainMenuText : MonoBehaviour
         BackButtonText2.text = CText.getTranslatedTextOf("BackButtonText");
         NextButtonText.text = CText.getTranslatedTextOf("NextButtonText");
         NextButtonText1.text = CText.getTranslatedTextOf("NextButtonText");
+        CloseButtonText.text = CText.getTranslatedTextOf("CloseButtonText");
     }
 }

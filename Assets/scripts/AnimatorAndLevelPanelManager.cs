@@ -43,46 +43,28 @@ public class AnimatorAndLevelPanelManager : MonoBehaviour
     {
         CheckWriteNumberEnoughforYouWinGamePanel();
 
-        //if player dont have next target box for write
+        // player dont have next target box for write
         if (activeButtonTargetCount <= 0)
         {
-            // Check Player Write enough number for compleate level
+            // Player filled enough boxes to complete the level
             if (ButtonListManager.instance.WriteList.Count >= _minWriteNumberForNextLevel)
             {
-                //if Player write enough number for compleate level and  dont have rational boxes for come back and change write 
-                var writeList = ButtonListManager.instance.WriteList;               
-                var secondButton = writeList[writeList.Count - 2].GetComponent<ButtonController>().targetButtonList.Count;                
-                if (secondButton == 1)
-                {
-                    CompleateLevelStartNewGameOrLevel();
-                }
-
-                //still have steap back button
-                else if (GetComponent<BackButtonManager>().stepBackButtonCount > 0)
-                {
+                //still have step back button
+                if (GetComponent<BackButtonManager>().stepBackButtonCount > 0)
                     FindObjectOfType<BackButtonManager>().StepBackAnimation(true);
-                }
-
-                //if player dont have next target box for write,  Write enough number for compleate level and have not steap back button
                 else
-                {
                     CompleateLevelStartNewGameOrLevel();
-                }
             }
-          
-            //if player dont have next target box for write and not enough number to compleate level But still have steap back button
+            // player did not fill enough boxes to compleate level But still have steap back button
             else if (GetComponent<BackButtonManager>().stepBackButtonCount > 0)
-            {
                 FindObjectOfType<BackButtonManager>().StepBackAnimation(true);
-            }
-            //  But have not steap back button
             else
             {
                 gameOverPanel.SetActive(true);
                 _GameOverAni.SetBool("isGameOver", true);                
             }
         }     
-        // if player write enough number. create confetti and open complete level icon
+        // player has target, filled enough number
         else if (ButtonListManager.instance.WriteList.Count == _minWriteNumberForNextLevel)
         {           
             Instantiate(Confetti, new Vector3(0, 0, 0), Quaternion.Euler(0, 0, 0));
@@ -92,6 +74,11 @@ public class AnimatorAndLevelPanelManager : MonoBehaviour
 
     public void CompleateLevelStartNewGameOrLevel()
     {
+        if (!completeLevelIcon.activeInHierarchy)
+        {
+            completeLevelIcon.SetActive(true);
+        }
+        
         //if Player write enough number for open nex level but also you write enough number for open new game matrix, open the new game panel  
         if (_youWinGame)
         {

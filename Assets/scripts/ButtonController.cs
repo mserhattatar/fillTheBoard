@@ -30,12 +30,12 @@ public class ButtonController : MonoBehaviour
 
     private void Start()
     {
-        ButtonManager.ButtonStart(gameObject);
+        ButtonManager.InitButton(gameObject);
     }
     
     private void Update()
     {
-       NextButtons();
+       ColorPotantialTarget();
     }
    
     public void WriteNumber()
@@ -58,11 +58,12 @@ public class ButtonController : MonoBehaviour
     {
         lockButton = false;
         _lockButtonWrite = false;
-        ButtonManager.ButtonStart(gameObject);
+        ButtonManager.InitButton(gameObject);
         ButtonManager.instance.NumberBack();
         gameObject.tag = "empty";
         ButtonListManager.instance.WriteList.RemoveAt(ButtonListManager.instance.WriteList.Count - 1);
         ButtonManager.ActiveButtonColor();
+        CleanTargetButtonColor();
     }
     public void LockButton()
     {
@@ -141,7 +142,7 @@ public class ButtonController : MonoBehaviour
         }
     }
 
-    private void NextButtons()
+    private void ColorPotantialTarget()
     {
         if (!startSearchPotantialNextButton) return;
 
@@ -158,5 +159,13 @@ public class ButtonController : MonoBehaviour
             ButtonManager.ButtonColorBlue(t.Value);
         }
         startSearchPotantialNextButton = false;
+    }
+    private void CleanTargetButtonColor()
+    {
+        foreach (var t in GameObject.FindGameObjectsWithTag("empty"))
+        {
+            t.GetComponent<ButtonController>().lockButton = false;
+            ButtonManager.ButtonColorDirtyWhite(t);
+        }
     }
 }

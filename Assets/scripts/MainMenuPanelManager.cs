@@ -105,7 +105,12 @@ public class MainMenuPanelManager : MonoBehaviour
     {
         InfoPanelPage3.SetActive(false);
     }  
-
+    public void CloseAllInfoPanel()
+    {
+        InfoPanelBackPage2();
+        InfoPanelBackPage1();
+        CloseInfoPanel();
+    }
     //Hile
     public void SerhatButton()
     {

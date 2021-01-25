@@ -68,7 +68,7 @@ public class ButtonManager : MonoBehaviour
     {
         numberToDisplay -= 1;
     }
-    public static void ButtonStart(GameObject button)
+    public static void InitButton(GameObject button)
     {//all boxes starting this value
         ButtonColorDirtyWhite(button);
         button.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = " ";
@@ -117,7 +117,7 @@ public class ButtonManager : MonoBehaviour
     {
         var _WriteList = ButtonListManager.instance.WriteList;
 
-        if (_WriteList.Count < 0) return;
+        if (_WriteList.Count < 1) return;
         ButtonColorPink(_WriteList[_WriteList.Count - 1]);
         _WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
 
