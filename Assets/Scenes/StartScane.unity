@@ -817,8 +817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00025797, y: -83.4}
-  m_SizeDelta: {x: 108.03696, y: 42.110016}
+  m_AnchoredPosition: {x: 48.199, y: -76.8}
+  m_SizeDelta: {x: 237.85382, y: 42.110016}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &251286699
 MonoBehaviour:
@@ -841,10 +841,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1fbbee0d40e56f64592525c75b7150d0, type: 3}
-    m_FontSize: 8
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -852,7 +852,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '*Empty and blocked boxes together.'
+  m_Text: '*Leere und  blockierte Boxen zusammen.'
 --- !u!222 &251286700
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1789,8 +1789,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 53.8, y: -113.8}
-  m_SizeDelta: {x: 137.5, y: 137.5}
+  m_AnchoredPosition: {x: 68.799995, y: -128.80002}
+  m_SizeDelta: {x: 107.5, y: 107.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472353045
 MonoBehaviour:
@@ -1838,11 +1838,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 472353043}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectColor: {r: 0.4811321, g: 0.079432175, b: 0.079432175, a: 0.6431373}
+  m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
 --- !u!1 &477486012
 GameObject:
@@ -4251,8 +4251,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125.32, y: 4.31}
-  m_SizeDelta: {x: 108.037476, y: 121.06665}
+  m_AnchoredPosition: {x: -125.1, y: -0.00063992}
+  m_SizeDelta: {x: 141.45523, y: 107.5013}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &920186918
 MonoBehaviour:
@@ -4275,7 +4275,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 1fbbee0d40e56f64592525c75b7150d0, type: 3}
-    m_FontSize: 10
+    m_FontSize: 11
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -4286,8 +4286,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Don't Forget! You Can leave only 20 unfilled* boxes  for every level.
-    \n          Otherwise you must retry the level until you success :)"
+  m_Text: "Vergesst das nicht! Du kannst in jedem Level maximal 20 K\xE4stchen unbesetzt*
+    lassen. Ansonsten musst du das Level erneut versuchen, bis du gen\xFCgend Boxen
+    f\xFCllst :)"
 --- !u!222 &920186919
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5831,8 +5832,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.8, y: 44.2}
-  m_SizeDelta: {x: 177.16013, y: 78.90424}
+  m_AnchoredPosition: {x: 44.8, y: 53.33}
+  m_SizeDelta: {x: 177.16013, y: 73.61379}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1238530397
 MonoBehaviour:
@@ -5866,8 +5867,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Retry game from starting first level. You will lose the your data except
-    best score for the seelcted game.
+  m_Text: "Wiederholt das Spiel vom ersten Level an. Du verlierst alle deine Daten
+    au\xDFer der besten Punktzahl f\xFCr das ausgew\xE4hlte Spiel."
 --- !u!222 &1238530398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6825,8 +6826,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.800003, y: -122.75201}
-  m_SizeDelta: {x: 177.16013, y: 68.71677}
+  m_AnchoredPosition: {x: 44.800003, y: -165}
+  m_SizeDelta: {x: 177.16013, y: 84.70509}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1596915414
 MonoBehaviour:
@@ -6860,8 +6861,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Go one step back and try your move again. You Have 1 Step Back Right For
-    Every Level and it will be lost if you do not use it.
+  m_Text: "Geht einen Schritt zur\xFCck und versucht euren Zug erneut. Du hast 1
+    Schritt zur\xFCck Recht f\xFCr jeden Level und es geht verloren, wenn du es nicht
+    nutzt"
 --- !u!222 &1596915415
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7624,7 +7626,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -94.965, y: -110.25}
+  m_AnchoredPosition: {x: -94.965, y: -144.5}
   m_SizeDelta: {x: 64.456375, y: 29.333195}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1736661549
@@ -8276,8 +8278,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 44.800003, y: -38.652004}
-  m_SizeDelta: {x: 177.16013, y: 70.04401}
+  m_AnchoredPosition: {x: 44.800003, y: -47.4}
+  m_SizeDelta: {x: 177.16013, y: 107.07608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1832814208
 MonoBehaviour:
@@ -8311,8 +8313,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Retry level as many time as you wish. Use it especially if you want a better
-    level end or want to change the blocked box positioning.
+  m_Text: "Du kannst das Level so oft wiederholen, wie du willst. Verwendet diese
+    Taste vor allem, wenn du ein besseres Levelende w\xFCnschst oder die Position
+    der blockierten K\xE4stchen am Levelanfang \xE4ndern m\xF6chtest."
 --- !u!222 &1832814209
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9736,7 +9739,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "TH\u0130S GAME CREAT\u0130NG   TATAR GAME"
+  m_Text: THIS GAME IS CREATED BY FunTactic GAMES
 --- !u!1 &1603012983863127596
 GameObject:
   m_ObjectHideFlags: 0
@@ -10726,7 +10729,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -92.7, y: -25.480003}
+  m_AnchoredPosition: {x: -92.7, y: -33.880013}
   m_SizeDelta: {x: 64.456375, y: 29.333195}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7130126540164170475

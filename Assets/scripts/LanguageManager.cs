@@ -23,7 +23,7 @@ public class LanguageManager : MonoBehaviour
         { "I5EmptyBoxesText", "5 Empty Boxes" },
         { "I5BlockedBoxesText", "5 Blocked Boxes" },
         { "IHowToPlay", "HOW TO PLAY?" },
-        { "FinishTheLevel", "Congrats!             You win this game!" },
+        { "FinishTheLevel", "Congrats! You win this game!" },
         { "RetryLevel", "RETRY LEVEL" },
         { "RetryGame", "RETRY GAME" },
         { "StepBack", "STEP BACK" },
@@ -44,8 +44,10 @@ public class LanguageManager : MonoBehaviour
         { "IDontForgetText2", "*Empty and blocked boxes together." },
         { "NextButtonText", "Next" },
         { "BackButtonText", "Back" },
-        { "CloseButtonText", "CLOSE" }
-        
+        { "CloseButtonText", "CLOSE" },
+        { "Makefreshstart", "Make a fresh start.                 Don't forget! You will lose current game data except best score." },
+        { "CancelButton", "Cancel" }
+
     };
     public Dictionary<string, string> trTextDict = new Dictionary<string, string> {
         { "CreatingBy", "BU OYUN FunTactic GAMES TARAFINDAN OLUŞTURULMUŞTUR" },
@@ -55,7 +57,7 @@ public class LanguageManager : MonoBehaviour
         { "I5EmptyBoxesText", "5 Boş Kutu" },
         { "I5BlockedBoxesText", "5 Kilitlenmiş kutu" },
         { "IHowToPlay", "NASIL OYNANIR?" },
-        { "FinishTheLevel", "Tebrikler!             Oyunu Kazandın" },
+        { "FinishTheLevel", "Tebrikler! Oyunu Kazandın" },
         { "RetryLevel", "LEVELİ YENİLE" },
         { "RetryGame", "OYUNU YENİLE" },
         { "StepBack", "GERİ AL" },
@@ -77,7 +79,9 @@ public class LanguageManager : MonoBehaviour
         { "IDontForgetText2", "*Boş ve kilitlenmiş kutular dahil." },
         { "NextButtonText", "ileri" },
         { "BackButtonText", "Geri" },
-         { "CloseButtonText", "KAPAT" }
+        { "CloseButtonText", "KAPAT" },
+        { "Makefreshstart", "Yeni bir baslangic yap. Unutma! En iyi skor hariç bu oyuna ait verilerini kaybedeceksin." },
+        { "CancelButton", "Vazgec" }
     };
     public Dictionary<string, string> deTextDict = new Dictionary<string, string> {
         { "CreatingBy", "DIESES SPIEL WURDE VON FunTactic GAMES ERSTELLT" },
@@ -87,7 +91,7 @@ public class LanguageManager : MonoBehaviour
         { "I5EmptyBoxesText", "5 leere Boxen" },
         { "I5BlockedBoxesText", "5 blockierte Boxen" },
         { "IHowToPlay", "WIE ZU SPIELEN?" },
-        { "FinishTheLevel", "Gratulation!             Sie haben das Spiel gewonnen!" },
+        { "FinishTheLevel", "Gratulation! Sie haben das Spiel gewonnen!" },
         { "RetryLevel", "RETRY-LEVEL" },
         { "RetryGame", "RETRY-SPIEL" },
         { "StepBack", "RÜCKSCHRITT" },
@@ -109,7 +113,9 @@ public class LanguageManager : MonoBehaviour
         { "IDontForgetText2", "*Leere und  blockierte Boxen zusammen." },
         { "NextButtonText", "Voran" },
         { "BackButtonText", "Zurück" },
-        { "CloseButtonText", "SCHLIEßEN" }
+        { "CloseButtonText", "SCHLIEßEN" },
+        { "Makefreshstart", "Macht einen Neuanfang . Vergesst das nicht! Du verlierst die aktuellen Spieldaten mit Ausnahme der besten Punktzahl." },
+        { "CancelButton", "Abbrechen" }
     };
 
 

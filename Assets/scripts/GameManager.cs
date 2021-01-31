@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 
         if (gameData.bestScoreNumberDictionary[_LevelMatrix] < gameData.numberToDisplayDictionary[_LevelMatrix])
         {
-            gameData.bestScoreNumberDictionary[_LevelMatrix] = gameData.numberToDisplayDictionary[_LevelMatrix] - 1;
+            gameData.bestScoreNumberDictionary[_LevelMatrix] = ButtonManager.instance.numberToDisplay - 1;
             gameData.bestScoreLevelDictionary[_LevelMatrix] = gameData.levelNumberToDisplayDictionary[_LevelMatrix];
         }
     }

@@ -19,6 +19,10 @@ public class LevelTextManager : MonoBehaviour
     public Text RetryGame3;   
     public Text YouWin;
 
+    public Text Makefreshstart;
+    public Text RetryGame4;
+    public Text CancelButton;
+
     void Start()
     {
         SetText();
@@ -42,10 +46,13 @@ public class LevelTextManager : MonoBehaviour
         RetryGame.text = CText.getTranslatedTextOf("RetryGame");
         RetryGame2.text = CText.getTranslatedTextOf("RetryGame");
         RetryGame3.text = CText.getTranslatedTextOf("RetryGame");
+        RetryGame4.text = CText.getTranslatedTextOf("RetryGame");
         StepBack.text = CText.getTranslatedTextOf("StepBack");
         BestScore.text = CText.getTranslatedTextOf("BestScore");
         BestLevel.text = CText.getTranslatedTextOf("BestLevel");
         NextLevel.text = CText.getTranslatedTextOf("NextLevel");
         YouWin.text = CText.getTranslatedTextOf("YouWin");
+        Makefreshstart.text = CText.getTranslatedTextOf("Makefreshstart");
+        CancelButton.text = CText.getTranslatedTextOf("CancelButton");
     }
 }

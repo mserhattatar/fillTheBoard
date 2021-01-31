@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
+    public GameObject ResetGamePanel;
 
     private void Awake()
     {
@@ -27,7 +28,21 @@ public class LevelManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    public void ResetGame()
+    public void OpenResetGamePanel()
+    {
+        var LevelMatrix = ButtonListManager.instance.Button1.Count;
+        var fakeLevelNumber = GameManager.instance.gameData.levelNumberToDisplayDictionary[LevelMatrix];
+
+        if (fakeLevelNumber ==1 && ButtonListManager.instance.WriteList.Count > 7 || fakeLevelNumber > 1)
+            ResetGamePanel.SetActive(true);
+        else
+            ResetGameNow();
+    }
+    public void CloseResetGamePanel()
+    {
+        ResetGamePanel.SetActive(false);
+    }
+    public void ResetGameNow()
     {
         GameManager.instance.ResetGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
