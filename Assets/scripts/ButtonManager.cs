@@ -19,40 +19,64 @@ public class ButtonManager : MonoBehaviour
         LevelButtonMatrix = ButtonListManager.instance.Button1.Count;
         numberToDisplay = GameManager.instance.gameData.numberToDisplayDictionary[LevelButtonMatrix];
         BlockButton();
-    }   
+    }
+    private void BlockButton()
+    {//player move to next level and have empty button. take empty button count and block some buttons as many as this count
+        int EmptyButtonAmount = GameManager.instance.gameData.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix];
 
-    public void NumberUpdate()
-    {
-        numberToDisplay += 1;
+        while (EmptyButtonAmount > 0)
+        {
+            int _max = 7;
+            switch (ButtonListManager.instance.Button1.Count)
+            {
+                case 7:
+                    _max = 49;
+                    break;
+                case 8:
+                    _max = 64;
+                    break;
+                case 9:
+                    _max = 81;
+                    break;
+                case 10:
+                    _max = 100;
+                    break;
+            }
+            int randomNo = Random.Range(0, _max);
+
+            //do not lock in locked boxes
+            if (!ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().lockButton)
+            {
+                ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().LockButton();
+                EmptyButtonAmount--;
+            }
+        }
+    }
+    public static void ButtonImage(GameObject button)
+    {//block boxes image X
+        var carpi = Resources.Load<Sprite>("carpi");
+        button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
+        button.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+        ButtonColorDirtyWhite(button);
     }
 
+    public void NumberUpdate()
+    {//write number update by activebutton
+        numberToDisplay += 1;
+    }
     public void NumberBack()
     {
         numberToDisplay -= 1;
     }
-
-    public static void ActiveButtonColor()
-    {
-        var _WriteList = ButtonListManager.instance.WriteList;
-
-        if (_WriteList.Count < 0) return;        
-        ButtonColorPink(_WriteList[_WriteList.Count - 1]);
-        _WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
-       
-        if (_WriteList.Count < 2) return;
-        ButtonColorRed(_WriteList[_WriteList.Count - 2]);
-    }
-    
-    
-    public static void ButtonStart(GameObject button)
-    {
-        ButtonColorDirtyWhite(button);        
+    public static void InitButton(GameObject button)
+    {//all boxes starting this value
+        ButtonColorDirtyWhite(button);
         button.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().text = " ";
         var myselfButton = button.GetComponent<Button>();
         myselfButton.onClick.AddListener(button.GetComponent<ButtonController>().WriteNumber);
     }
     public static void SetNumberButtonFontSize(GameObject button)
-    {
+    {// change write number text size in boxes. if number to large in box
         int size = 7;
         int minus =0;
         int N = instance.numberToDisplay;
@@ -88,15 +112,19 @@ public class ButtonManager : MonoBehaviour
         button.transform.GetChild(0).GetComponent<UnityEngine.UI.Text>().fontSize = size;               
     }
 
-    public static void ButtonImage(GameObject button)
+    //Buttons Collor
+    public static void ActiveButtonColor()
     {
-        var carpi = Resources.Load<Sprite>("carpi");
-        button.GetComponent<UnityEngine.UI.Image>().sprite = carpi;
-        button.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-        ButtonColorDirtyWhite(button);
+        var _WriteList = ButtonListManager.instance.WriteList;
 
+        if (_WriteList.Count < 1) return;
+        ButtonColorPink(_WriteList[_WriteList.Count - 1]);
+        _WriteList[_WriteList.Count - 1].GetComponent<ButtonController>().startSearchPotantialNextButton = true;
+
+        if (_WriteList.Count < 2) return;
+        ButtonColorRed(_WriteList[_WriteList.Count - 2]);
     }
-    
+
     public static void ButtonColorBlue(GameObject button)
     {
         var colorBlock = button.GetComponent<Button>().colors;
@@ -167,38 +195,5 @@ public class ButtonManager : MonoBehaviour
         colorBlock.selectedColor = colorPink;
         colorBlock.disabledColor = colorPink;
         button.GetComponent<Button>().colors = colorBlock;
-    }
-   
-    
-    private void BlockButton()
-    {
-        int EmptyButtonAmount = GameManager.instance.gameData.emptyButtonAmountAtLevelEndDictionary[LevelButtonMatrix];
-
-        while(EmptyButtonAmount > 0)
-        {
-            int _max = 7;
-            switch (ButtonListManager.instance.Button1.Count)
-            {
-                case 7:
-                    _max = 49;
-                    break;
-                case 8:
-                    _max = 64;
-                    break;
-                case 9:
-                    _max = 81;
-                    break;
-                case 10:
-                    _max = 100;
-                    break;
-            }
-            int randomNo = Random.Range(0, _max);
-
-            if (!ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().lockButton)
-            {
-                ButtonListManager.instance.EmtyNumberButton[randomNo].GetComponent<ButtonController>().LockButton();
-                EmptyButtonAmount--;
-            }
-        }       
     }
 }

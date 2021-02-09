@@ -10,7 +10,6 @@ public static class SaveSysteam
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/7x7tatar.Data";
         FileStream stream = new FileStream(path, FileMode.Create);
-        //GameData data = new GameData(gameManager);
 
         formatter.Serialize(stream, gameManager.gameData);
         stream.Close();

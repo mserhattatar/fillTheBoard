@@ -5,6 +5,7 @@ using LangNamespace;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
     public GameData gameData;
 
     private void Awake()
@@ -21,53 +22,7 @@ public class GameManager : MonoBehaviour
             return;
         }       
         GetvalueFromGameData();
-    }   
-   
-    public void ResetGame()
-    {
-        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
-        gameData.numberToDisplayDictionary[_LevelMatrix] = 1;
-        gameData.levelNumberToDisplayDictionary[_LevelMatrix] = 1;
-        gameData.emptyButtonAmountAtLevelEndDictionary[_LevelMatrix] = 0;
-        SaveGameNow();
-
     }
-    public void LevelComplete()
-    {
-        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
-        gameData.numberToDisplayDictionary[_LevelMatrix] = ButtonManager.instance.numberToDisplay;
-        SetBestScore();
-        gameData.levelNumberToDisplayDictionary[_LevelMatrix] += 1;
-        gameData.emptyButtonAmountAtLevelEndDictionary[_LevelMatrix] = GameObject.FindGameObjectsWithTag("empty").Length;
-        gameData.selectedLang = LanguageManager.instance.selectedLang;
-        SaveGameNow();
-    }   
-
-    public void SaveBestScore()
-    {
-        SetBestScore();
-        SaveGameNow();
-    }
-    public void SaveSelectedLanguage()
-    {
-        gameData.selectedLang = LanguageManager.instance.selectedLang;
-        SaveGameNow();
-    }
-    private void SetBestScore()
-    {
-        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
-
-        if (gameData.bestScoreNumberDictionary[_LevelMatrix] < gameData.numberToDisplayDictionary[_LevelMatrix])
-        {
-            gameData.bestScoreNumberDictionary[_LevelMatrix] = gameData.numberToDisplayDictionary[_LevelMatrix] - 1;
-            gameData.bestScoreLevelDictionary[_LevelMatrix] = gameData.levelNumberToDisplayDictionary[_LevelMatrix];
-        }
-    }
-    public void SaveGameNow()
-    {
-        SaveSysteam.SaveGameData(this);
-    }   
-
     public void GetvalueFromGameData()
     {
         GameData data = SaveSysteam.getSavedGameData();
@@ -87,18 +42,64 @@ public class GameManager : MonoBehaviour
         {
             gameData = data;
         }
-        
+
         LanguageManager.instance.initLayoutManager();
     }
-    
     private void InitGameDataDict(Dictionary<int, int> gameDataDict, int firstValue)
-    { 
+    {
         foreach (var gameIndex in new List<int> { 7, 8, 9, 10 })
         {
             gameDataDict.Add(gameIndex, firstValue);
-        }       
+        }
+    }
+    public void SaveGameNow()
+    {
+        SaveSysteam.SaveGameData(this);
     }
 
+
+
+    public void LevelComplete()
+    {
+        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
+        gameData.numberToDisplayDictionary[_LevelMatrix] = ButtonManager.instance.numberToDisplay;
+        SetBestScore();
+        gameData.levelNumberToDisplayDictionary[_LevelMatrix] += 1;
+        gameData.emptyButtonAmountAtLevelEndDictionary[_LevelMatrix] = GameObject.FindGameObjectsWithTag("empty").Length;
+        gameData.selectedLang = LanguageManager.instance.selectedLang;
+        SaveGameNow();
+    }
+    public void SaveSelectedLanguage()
+    {
+        gameData.selectedLang = LanguageManager.instance.selectedLang;
+        SaveGameNow();
+    }  
+    public void SaveBestScore()
+    {
+        SetBestScore();
+        SaveGameNow();
+    }
+    private void SetBestScore()
+    {
+        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
+
+        if (gameData.bestScoreNumberDictionary[_LevelMatrix] < gameData.numberToDisplayDictionary[_LevelMatrix])
+        {
+            gameData.bestScoreNumberDictionary[_LevelMatrix] = ButtonManager.instance.numberToDisplay - 1;
+            gameData.bestScoreLevelDictionary[_LevelMatrix] = gameData.levelNumberToDisplayDictionary[_LevelMatrix];
+        }
+    }
+    public void ResetGame()
+    {
+        int _LevelMatrix = ButtonManager.instance.LevelButtonMatrix;
+        gameData.numberToDisplayDictionary[_LevelMatrix] = 1;
+        gameData.levelNumberToDisplayDictionary[_LevelMatrix] = 1;
+        gameData.emptyButtonAmountAtLevelEndDictionary[_LevelMatrix] = 0;
+        SaveGameNow();
+
+    }
+
+    //Hile
     public void ResetGameDataDict()
     {
         foreach (var gameIndex in new List<int> { 7, 8, 9, 10 })
@@ -110,7 +111,6 @@ public class GameManager : MonoBehaviour
             gameData.bestScoreLevelDictionary[gameIndex] = 0;
         }
     }
-
     public void SerhatHile(int matrix, int number)
     {
         gameData.numberToDisplayDictionary[matrix] = number;

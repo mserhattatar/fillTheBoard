@@ -28,7 +28,12 @@ public class MainMenuPanelManager : MonoBehaviour
 
 
     private void Start()
-    {       
+    {
+        OpenNewGameButton();
+    }  
+
+    private void OpenNewGameButton()
+    {//check if player write enough number for open next game; open onclick and icon
         var data = GameManager.instance.gameData;
 
         if (data.bestScoreNumberDictionary[10] >= 1000)
@@ -44,18 +49,20 @@ public class MainMenuPanelManager : MonoBehaviour
         {
             Button9x9.GetComponent<Button>().interactable = true;
             Compleate8x8.SetActive(true);
-        }       
+        }
         if (data.bestScoreNumberDictionary[7] >= 490)
         {
             Button8x8.GetComponent<Button>().interactable = true;
             Compleate7x7.SetActive(true);
-        }       
-    }  
+        }
+    }
+
+
+    //Button on click func
     public void InfoPanelButtonAni()
     {
         infoPanelButton.GetComponent<Animator>().SetBool("infoButton", true);
     }
-
     public void StartGame7x7()
     {
         SceneManager.LoadScene(1);
@@ -97,10 +104,14 @@ public class MainMenuPanelManager : MonoBehaviour
     public void InfoPanelBackPage2()
     {
         InfoPanelPage3.SetActive(false);
+    }  
+    public void CloseAllInfoPanel()
+    {
+        InfoPanelBackPage2();
+        InfoPanelBackPage1();
+        CloseInfoPanel();
     }
-  
-
-
+    //Hile
     public void SerhatButton()
     {
         if (LanguageManager.instance.selectedLang == 1)
