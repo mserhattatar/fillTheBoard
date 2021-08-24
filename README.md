@@ -1,5 +1,5 @@
 
-# fillTheBoard Game
+# 7x7 Fill The Board Game
 You have a board of 10x10 to fill. Start from 1 and try to fill the board as much as possible. 
 
 
